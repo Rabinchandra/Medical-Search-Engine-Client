@@ -1,1 +1,76 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import url("https://cdn-uicons.flaticon.com/2.4.0/uicons-regular-rounded/css/uicons-regular-rounded.css");
+@import url("https://cdn-uicons.flaticon.com/2.4.0/uicons-solid-straight/css/uicons-solid-straight.css");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --primary-color: rgb(31, 113, 255);
+  --success-color: #4ab94e;
+  --danger-color: rgb(255, 55, 0);
+}
+
+input {
+  outline: none;
+}
+
+* {
+  font-family: "Noto Sans";
+}
+
+body {
+  padding: 0 6em;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* Buttons */
+button {
+  border: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-weight: 300;
+  outline: none;
+}
+
+.primary-btn {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.success-btn {
+  background-color: var(--success-color);
+  color: #fff;
+}
+
+.danger-btn {
+  background-color: var(--danger-color);
+  color: #fff;
+}
+
+.primary-btn:hover {
+  background: rgb(21, 98, 231);
+}
+
+.success-btn:hover {
+  background: #3da540;
+}
+
+.danger-btn:hover {
+  background: rgb(226, 51, 2);
+}
+
+/*  */
+input {
+  border: 1px solid #bfbfbfdd;
+  font-weight: 300;
+  padding: 10px 13px;
+}
+
+.ratings i {
+  display: inline-block;
+  margin-right: 5px;
+  color: rgb(255, 196, 0);
+}

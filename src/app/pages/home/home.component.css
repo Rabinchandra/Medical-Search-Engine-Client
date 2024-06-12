@@ -1,0 +1,64 @@
+header > section {
+  flex: 1;
+}
+
+.search-container {
+  border-bottom: 1px solid #333;
+  width: 500px;
+}
+
+input {
+  font-size: 1.2em;
+  outline: 0 !important;
+}
+
+.search-icon {
+  color: #aaa8a8;
+  cursor: pointer;
+}
+
+.logo {
+  background: var(--primary-color);
+  width: 50px;
+  height: 40px;
+  border-radius: 0 20px 20px 0;
+  margin-top: 2em;
+}
+
+.profile {
+  text-align: right;
+}
+
+.profile-wrapper {
+  width: 50px;
+  height: 50px;
+  background-position: center center;
+  background-image: url("https://i.pinimg.com/564x/4b/b9/d9/4bb9d9aea543288e30cd77a345a8f948.jpg");
+  background-size: contain;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.profile-wrapper h3 {
+  font-size: 13px;
+}
+
+.time {
+  font-size: 20px;
+}
+
+.day {
+  font-weight: 300;
+}
+
+.query-response {
+  padding-top: 4em;
+}
+
+.loader {
+  transform: scale(1.2);
+}
+
+.query-response h2 {
+  padding-bottom: 20px !important;
+}
