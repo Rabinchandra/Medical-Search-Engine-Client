@@ -1,33 +1,76 @@
 <div class="mb-5">
-  <h2 class="mt-5">Create an account</h2>
-  <p class="text-secondary pt-2">Sign up now and access more features</p>
-  <form class="w-50 mt-5">
-    <div>
-      <label for="name">Full Name</label>
-      <input type="text" placeholder="Type your full name" />
-    </div>
-    <div>
-      <label for="name">Birth Date</label>
-      <input type="date" placeholder="Type your birth" />
-    </div>
-    <div>
-      <label for="name">Contact Number</label>
-      <input type="tel" placeholder="Type your contact number" />
-    </div>
-    <div>
-      <label for="name">Address</label>
-      <input type="text" placeholder="Type your address" />
-    </div>
-    <div>
-      <label for="name">Email Address</label>
-      <input type="email" placeholder="Type your email" />
-    </div>
-    <div>
-      <label for="name">Password</label>
-      <input type="password" placeholder="Type password" />
-    </div>
-    <div>
-      <button type="submit" class="primary-btn w-100">Sign up</button>
-    </div>
-  </form>
+  <section class="w-50 pb-5">
+    <header class="text-center">
+      <h2 class="mt-5">Create an account</h2>
+      <p class="text-secondary pt-2">Sign up now and access more features</p>
+    </header>
+    <form class="w-100 mt-4" (ngSubmit)="onFormSubmit()">
+      <div>
+        <label>Full Name</label>
+        <input
+          type="text"
+          placeholder="Type your full name"
+          [(ngModel)]="patient.name"
+          name="patient_name"
+        />
+      </div>
+      <div>
+        <label>Birth Date</label>
+        <input
+          type="date"
+          placeholder="Type your birth"
+          [(ngModel)]="patient.birth_date"
+          name="birth_date"
+        />
+      </div>
+      <div>
+        <label>Contact Number</label>
+        <input
+          type="tel"
+          placeholder="Type your contact number"
+          [(ngModel)]="patient.contact_number"
+          name="contact_number"
+        />
+      </div>
+      <div>
+        <label>Address</label>
+        <input
+          type="text"
+          placeholder="Type your address"
+          [(ngModel)]="patient.address"
+          name="address"
+        />
+      </div>
+      <div>
+        <label>Email Address</label>
+        <input
+          type="email"
+          placeholder="Type your email"
+          [(ngModel)]="patient.email"
+          name="email"
+        />
+      </div>
+      <div>
+        <label>Password</label>
+        <input
+          type="password"
+          placeholder="Type password"
+          [(ngModel)]="patient.password"
+          name="password"
+        />
+      </div>
+      @if(failureMessage !== '') {
+      <p class="text-danger">
+        {{ failureMessage }}
+      </p>
+      } @if(successMessage !== '') {
+      <p class="text-success">
+        {{ successMessage }}
+      </p>
+      }
+      <div>
+        <button type="submit" class="primary-btn w-100">Sign up</button>
+      </div>
+    </form>
+  </section>
 </div>

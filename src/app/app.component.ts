@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase/config';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +14,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 })
 export class AppComponent {
   title = 'medical-search-engine-client';
+
+  constructor(private userService: UserService) {}
+
+  ngOnInit() {
+    onAuthStateChanged(auth, (user) => {
+      this.userService.currentUser = user;
+    });
+  }
 }

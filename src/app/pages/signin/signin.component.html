@@ -1,0 +1,47 @@
+<div class="mb-5">
+  <section class="w-50 pb-5">
+    <header class="text-center">
+      <h2 class="mt-5">Sign in to your account</h2>
+      <p class="text-secondary pt-2">Lorem ipsum dolor sit amet.</p>
+    </header>
+    <form class="w-100 mt-4" (ngSubmit)="onFormSubmit()">
+      <div>
+        <label>Email Address</label>
+        <input
+          type="email"
+          placeholder="Type your email"
+          [(ngModel)]="user.email"
+          name="email"
+        />
+      </div>
+      <div>
+        <label>Password</label>
+        <input
+          type="password"
+          placeholder="Type password"
+          [(ngModel)]="user.password"
+          name="password"
+        />
+      </div>
+      @if(failureMessage !== '') {
+      <p class="text-danger">
+        {{ failureMessage }}
+      </p>
+      } @if(successMessage !== '') {
+      <p class="text-success">
+        {{ successMessage }}
+      </p>
+      }
+      <div>
+        <button type="submit" class="primary-btn w-100">Sign in</button>
+      </div>
+    </form>
+
+    <div class="text-center mt-5">
+      <span>Haven't created an account?</span>
+      <div class="mt-2">
+        <a [routerLink]="['/signup']">Create an account</a>
+      </div>
+    </div>
+  </section>
+</div>

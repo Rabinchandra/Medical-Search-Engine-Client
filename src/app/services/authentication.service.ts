@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+  User,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from 'firebase/auth';
 import { auth } from '../firebase/config';
 import { FirebaseError } from 'firebase/app';
 
@@ -9,7 +14,7 @@ import { FirebaseError } from 'firebase/app';
 export class AuthenticationService {
   constructor() {}
 
-  createUser(email: string, password: string) {
+  createUser(email: string, password: string): Promise<User | null> {
     console.log('Creating user...');
 
     return new Promise(async (resolve, reject) => {
@@ -21,8 +26,7 @@ export class AuthenticationService {
         );
 
         const user = userCredential.user;
-
-        resolve('User successfully created!');
+        resolve(user);
       } catch (error) {
         if (error instanceof FirebaseError) {
           let msg = error.code;
@@ -49,6 +53,21 @@ export class AuthenticationService {
           reject('Something went wrong!');
         }
       }
+    });
+  }
+
+  userSignIn(email: string, password: string): Promise<User> {
+    return new Promise((resolve, reject) => {
+      signInWithEmailAndPassword(auth, email, password)
+        .then((res) => {
+          resolve(res.user);
+        })
+        .catch((err) => {
+          const errCode = err.code;
+          if (errCode === 'auth/invalid-credential') {
+            reject('Login fail! Invalid credentials!!');
+          }
+        });
     });
   }
 }

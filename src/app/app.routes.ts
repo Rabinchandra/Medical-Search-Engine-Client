@@ -4,6 +4,7 @@ import { ConsultDoctorComponent } from './pages/consult-doctor/consult-doctor.co
 import { BookingComponent } from './pages/booking/booking.component';
 import { AppointmentComponent } from './pages/appointment/appointment.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { SigninComponent } from './pages/signin/signin.component';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,9 @@ export const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent,
+  },
+  {
+    path: 'signin',
+    component: SigninComponent,
   },
 ];

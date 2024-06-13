@@ -13,11 +13,15 @@
       <a href="#">Records</a>
     </li>
     <li>
-      <a href="">
+      @if(currentUser == null) {
+      <a [routerLink]="['signin']">
         <small>
           <button class="primary-btn text-sm">Sign in</button>
         </small>
       </a>
+      } @else {
+      <button (click)="onLogout()">Logout</button>
+      }
     </li>
   </ul>
 </nav>
