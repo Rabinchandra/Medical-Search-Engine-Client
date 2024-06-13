@@ -31,8 +31,9 @@ button {
   border: none;
   padding: 10px 12px;
   border-radius: 6px;
-  font-weight: 300;
+  font-weight: 400;
   outline: none;
+  font-size: 14px;
 }
 
 .primary-btn {
@@ -73,4 +74,30 @@ input {
   display: inline-block;
   margin-right: 5px;
   color: rgb(255, 196, 0);
+}
+
+/* Forms design */
+label {
+  font-weight: 500;
+}
+
+form > div,
+form label {
+  display: block;
+  width: 100%;
+}
+
+form > div {
+  margin-bottom: 1em;
+}
+
+form input {
+  width: 100%;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+form input:focus,
+form input:hover {
+  border: 1px solid var(--primary-color);
 }

@@ -3,25 +3,6 @@ form {
   width: 600px;
 }
 
-label {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-form > div,
-form label {
-  display: block;
-  width: 100%;
-}
-
-form > div {
-  margin-bottom: 2em;
-}
-
-form input {
-  width: 100%;
-}
-
 .profile-img {
   width: 150px;
   height: 150px;
