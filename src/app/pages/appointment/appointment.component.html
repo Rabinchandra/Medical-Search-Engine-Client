@@ -1,43 +1,8 @@
-<section class="admin-appointments">
-    <h2 class="mb-5">Appointments</h2>
-    <section class="pending-appointments">
-      @for(patient of patients; track patient) {
-      <div class="d-flex mb-5 appointment-list-item py-4">
-        <section class="flex-1 d-flex">
-          <div
-            [style.background-image]="'url(' + patient.profileImg + ')'"
-            class="profile-img rounded-circle"
-          ></div>
-          <!-- Details -->
-          <div class="details ml-4">
-            <h3 class="mb-2">{{ patient.patientName }}</h3>
-            <div class="py-1 text-secondary">
-              <b>Doctor Name: </b>
-              <span>
-                {{ patient.doctorName }}
-              </span>
-            </div>
-            <div class="text-secondary">
-              <b>Contact: </b>
-              <span> +9150232412312 </span>
-            </div>
-          </div>
-        </section>
-  
-        <section class="buttons">
-          <button class="success-btn text-center">
-            <i class="fi fi-rr-check"></i>
-          </button>
-          <button class="danger-btn mx-2">
-            <i class="fi fi-ss-cross"></i>
-          </button>
-          <button class="primary-btn">
-            <i class="fi fi-rr-phone-call d-inline-block mr-2"></i> Call the
-            patient
-          </button>
-        </section>
-      </div>
-      }
-    </section>
-  </section>
-  
+@if(currentUser?.role == 'admin') {
+<app-admin-manage-appointments></app-admin-manage-appointments>
+}
+@else if(currentUser?.role == 'patient') {
+  <div>
+    <h2>Patient View</h2>
+  </div>
+}

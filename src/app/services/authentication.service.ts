@@ -35,7 +35,7 @@ export class AuthenticationService {
         updateProfile(user, {
           displayName: username,
           photoURL:
-            'https://wallpapers-clan.com/wp-content/uploads/2023/01/anime-aesthetic-boy-pfp-11.jpg',
+            'https://img.freepik.com/premium-photo/young-black-man-smiling-very-happily-profile-photo-with-orange-colors-created-with-ai_116400-41.jpg',
         });
 
         resolve(user);

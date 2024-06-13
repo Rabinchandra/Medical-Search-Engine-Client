@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { UserService } from '../../services/user.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   get currentUser() {
     return this.userService.currentUser;
@@ -18,5 +18,7 @@ export class NavbarComponent {
 
   onLogout() {
     this.userService.logout();
+    // Redirect to home page
+    this.router.navigateByUrl('/');
   }
 }

@@ -20,7 +20,19 @@ export class AppComponent {
   ngOnInit() {
     onAuthStateChanged(auth, (user) => {
       console.log(user?.displayName);
-      this.userService.currentUser = user;
+      if (user) {
+        // Change the logic letter
+        if (user.displayName == 'admin') {
+          this.userService.currentUser = { ...user, role: 'admin' };
+        } else {
+          this.userService.currentUser = { ...user, role: 'patient' };
+        }
+
+        console.log(this.userService.currentUser);
+      } else {
+        // if logout
+        this.userService.currentUser = null;
+      }
     });
   }
 }

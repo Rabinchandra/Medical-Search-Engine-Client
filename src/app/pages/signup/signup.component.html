@@ -1,10 +1,19 @@
-<div class="d-flex">
-  <section class="w-50 pb-5">
+<div class="d-flex mx-auto">
+  <section class="w-50 pb-5 mx-auto">
     <header class="text-center">
       <h2 class="mt-5">Create an account</h2>
       <p class="text-secondary pt-2">Sign up now and access more features</p>
     </header>
     <form class="w-100 mt-4" (ngSubmit)="onFormSubmit()">
+      @if(failureMessage !== '') {
+      <p class="text-danger">
+        {{ failureMessage }}
+      </p>
+      } @if(successMessage !== '') {
+      <p class="text-success">
+        {{ successMessage }}
+      </p>
+      }
       <div>
         <label>Full Name</label>
         <input
@@ -60,15 +69,7 @@
           name="password"
         />
       </div>
-      @if(failureMessage !== '') {
-      <p class="text-danger">
-        {{ failureMessage }}
-      </p>
-      } @if(successMessage !== '') {
-      <p class="text-success">
-        {{ successMessage }}
-      </p>
-      }
+
       <div>
         <button type="submit" class="primary-btn w-100">Sign up</button>
       </div>

@@ -3,15 +3,30 @@
     <li>
       <a [routerLink]="['']" class="active-link">Search Engine</a>
     </li>
+
+    <!-- link based on the type of user -->
+    @if(currentUser?.role == 'patient' || currentUser == null) {
     <li>
       <a [routerLink]="['consult-doctor']">Consult a doctor</a>
     </li>
+    } @else if(currentUser?.role == 'admin') {
+    <li>
+      <a [routerLink]="['consult-doctor']">Doctors</a>
+    </li>
+    <li>
+      <a [routerLink]="['consult-doctor']">Patients</a>
+    </li>
+    }
+
+    <!--  -->
     <li>
       <a [routerLink]="['appointment']">Appointments</a>
     </li>
+
     <li>
       <a href="#">Records</a>
     </li>
+
     <li>
       @if(currentUser == null) {
       <a [routerLink]="['signin']">

@@ -1,0 +1,25 @@
+.profile-img {
+  width: 100px;
+  height: 100px;
+
+  background-position: center center;
+  background-size: cover;
+}
+
+.buttons button {
+  font-size: 14px;
+}
+
+.appointment-list-item {
+  border-bottom: 1px solid #eee;
+}
+
+.tabs button:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.tabs button:nth-child(2) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
