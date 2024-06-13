@@ -32,7 +32,11 @@
 
     <section class="profile mt-5 text-secondary">
       <div class="profile-wrapper mb-3"></div>
-      <h6>John Doe</h6>
+      <h6>
+        @if(currentUser == null) { Anonymous User } @else {
+        {{ currentUser.displayName }}
+        }
+      </h6>
       <div class="time mt-2 mb-1">11:40 AM</div>
       <div class="day">Sunday, June 10</div>
     </section>

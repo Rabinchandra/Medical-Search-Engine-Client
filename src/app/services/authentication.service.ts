@@ -3,10 +3,11 @@ import {
   User,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signInWithPopup,
+  updateProfile,
 } from 'firebase/auth';
 import { auth } from '../firebase/config';
 import { FirebaseError } from 'firebase/app';
+import { IUser } from '../../interface/IUser';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,11 @@ import { FirebaseError } from 'firebase/app';
 export class AuthenticationService {
   constructor() {}
 
-  createUser(email: string, password: string): Promise<User | null> {
+  createUser(
+    email: string,
+    password: string,
+    username: string
+  ): Promise<IUser | null> {
     console.log('Creating user...');
 
     return new Promise(async (resolve, reject) => {
@@ -26,6 +31,13 @@ export class AuthenticationService {
         );
 
         const user = userCredential.user;
+
+        updateProfile(user, {
+          displayName: username,
+          photoURL:
+            'https://wallpapers-clan.com/wp-content/uploads/2023/01/anime-aesthetic-boy-pfp-11.jpg',
+        });
+
         resolve(user);
       } catch (error) {
         if (error instanceof FirebaseError) {
@@ -65,7 +77,7 @@ export class AuthenticationService {
         .catch((err) => {
           const errCode = err.code;
           if (errCode === 'auth/invalid-credential') {
-            reject('Login fail! Invalid credentials!!');
+            reject('Login fail! Please provide valid email/password :(');
           }
         });
     });

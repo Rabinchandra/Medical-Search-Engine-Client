@@ -5,6 +5,15 @@
       <p class="text-secondary pt-2">Lorem ipsum dolor sit amet.</p>
     </header>
     <form class="w-100 mt-4" (ngSubmit)="onFormSubmit()">
+      @if(failureMessage !== '') {
+      <p class="text-danger text-center">
+        {{ failureMessage }}
+      </p>
+      } @if(successMessage !== '') {
+      <p class="text-success text-center">
+        {{ successMessage }}
+      </p>
+      }
       <div>
         <label>Email Address</label>
         <input
@@ -23,15 +32,7 @@
           name="password"
         />
       </div>
-      @if(failureMessage !== '') {
-      <p class="text-danger">
-        {{ failureMessage }}
-      </p>
-      } @if(successMessage !== '') {
-      <p class="text-success">
-        {{ successMessage }}
-      </p>
-      }
+
       <div>
         <button type="submit" class="primary-btn w-100">Sign in</button>
       </div>

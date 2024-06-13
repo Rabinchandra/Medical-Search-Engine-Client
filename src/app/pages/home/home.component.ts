@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { MedicalSuggestionService } from '../../services/medical-suggestion.service';
 import { IMedicalSearchResponse } from '../../../interface/IMedicalSearchResponse';
 import { RouterLink } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,7 @@ export class HomeComponent {
 
   constructor(
     private medicalSuggestionService: MedicalSuggestionService,
-    private renderer: Renderer2
+    private userService: UserService
   ) {}
 
   formatTextWithBold(text: string) {
@@ -57,5 +58,9 @@ export class HomeComponent {
 
         this.isLoading = false;
       });
+  }
+
+  get currentUser() {
+    return this.userService.currentUser;
   }
 }

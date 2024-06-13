@@ -1,7 +1,7 @@
 <nav>
   <ul class="d-flex p-0 py-3 justify-content-end align-items-center">
     <li>
-      <a [routerLink]="['']">Search Engine</a>
+      <a [routerLink]="['']" class="active-link">Search Engine</a>
     </li>
     <li>
       <a [routerLink]="['consult-doctor']">Consult a doctor</a>
@@ -20,7 +20,15 @@
         </small>
       </a>
       } @else {
-      <button (click)="onLogout()">Logout</button>
+      <section class="profile-wrapper">
+        <div
+          [style.background-image]="'url(' + currentUser.photoURL + ')'"
+          class="profile rounded-circle"
+        ></div>
+        <div class="logout" (click)="onLogout()">Log out</div>
+      </section>
+
+      <!-- <button (click)="onLogout()">Logout</button> -->
       }
     </li>
   </ul>

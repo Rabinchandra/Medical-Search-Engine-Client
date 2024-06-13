@@ -17,6 +17,10 @@ a:hover {
   border-bottom: 2px solid var(--primary-color);
 }
 
+.active-link {
+  border-bottom: 2px solid var(--primary-color);
+}
+
 nav {
   top: 0;
   position: sticky;
@@ -29,4 +33,47 @@ nav {
   ); /* White background with 70% opacity */
   backdrop-filter: blur(3px); /* Apply a blur effect */
   -webkit-backdrop-filter: blur(10px); /* For Safari support */
+}
+
+.profile {
+  width: 40px;
+  height: 40px;
+
+  background-position: center center;
+  background-size: contain;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.profile:hover {
+  transform: scale(1.1);
+}
+
+.profile-wrapper {
+  position: relative;
+}
+
+.profile-wrapper:hover .logout {
+  display: block;
+}
+
+.logout {
+  position: absolute;
+  bottom: -33px;
+  left: -20px;
+  width: 80px;
+  cursor: pointer;
+  text-align: center;
+  display: none;
+  background-color: var(--success-color);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 13px;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.logout:hover {
+  display: block;
+  transform: scale(1.1);
 }

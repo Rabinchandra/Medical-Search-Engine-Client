@@ -19,6 +19,7 @@ export class AppComponent {
 
   ngOnInit() {
     onAuthStateChanged(auth, (user) => {
+      console.log(user?.displayName);
       this.userService.currentUser = user;
     });
   }

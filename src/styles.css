@@ -63,6 +63,11 @@ button {
   background: rgb(226, 51, 2);
 }
 
+button:focus {
+  outline: 0;
+  border: 0;
+}
+
 /*  */
 input {
   border: 1px solid #bfbfbfdd;
@@ -100,4 +105,9 @@ form input {
 form input:focus,
 form input:hover {
   border: 1px solid var(--primary-color);
+}
+
+.text-danger,
+.text-success {
+  font-weight: 300;
 }

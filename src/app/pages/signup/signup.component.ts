@@ -33,7 +33,7 @@ export class SignupComponent {
 
     // Create a user with the given email and password
     this.authService
-      .createUser(this.patient.email, this.patient.password)
+      .createUser(this.patient.email, this.patient.password, this.patient.name)
       .then((res) => {
         console.log(res);
 

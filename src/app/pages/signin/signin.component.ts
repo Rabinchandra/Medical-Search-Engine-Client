@@ -28,7 +28,19 @@ export class SigninComponent {
 
     this.auth
       .userSignIn(this.user.email, this.user.password)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        this.successMessage = 'User succesfully login!';
+
+        setTimeout(() => {
+          this.successMessage = '';
+        }, 3000);
+      })
+      .catch((err) => {
+        this.failureMessage = err;
+
+        setTimeout(() => {
+          this.failureMessage = '';
+        }, 5000);
+      });
   }
 }
