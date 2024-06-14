@@ -1,8 +1,5 @@
 @if(currentUser?.role == 'admin') {
 <app-admin-manage-appointments></app-admin-manage-appointments>
-}
-@else if(currentUser?.role == 'patient') {
-  <div>
-    <h2>Patient View</h2>
-  </div>
+} @else if(currentUser?.role == 'patient') {
+<app-patient-appointment></app-patient-appointment>
 }

@@ -1,0 +1,25 @@
+thead {
+  background-color: var(--primary-color);
+}
+
+td {
+  padding: 7px 0;
+  text-transform: capitalize;
+  font-size: 14px;
+}
+
+thead td:first-child {
+  border-radius: 6px 0 0 0;
+}
+
+thead td:last-child {
+  border-radius: 0 6px 0 0;
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(229, 238, 255, 0.886);
+}
+
+tr button {
+  font-size: 13px;
+}
