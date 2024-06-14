@@ -9,6 +9,7 @@ import { AdminDoctorsComponent } from './components/admin-doctors/admin-doctors.
 import { AdminPatientsComponent } from './components/admin-patients/admin-patients.component';
 import { AdminAddDoctorComponent } from './components/admin-add-doctor/admin-add-doctor.component';
 import { MeetingComponent } from './pages/meeting/meeting.component';
+import { DoctorAppointmentComponent } from './components/doctor-appointment/doctor-appointment.component';
 
 export const routes: Routes = [
   {
@@ -50,5 +51,9 @@ export const routes: Routes = [
   {
     path: 'meeting',
     component: MeetingComponent,
+  },
+  {
+    path: 'doctor-appointment',
+    component: DoctorAppointmentComponent,
   },
 ];

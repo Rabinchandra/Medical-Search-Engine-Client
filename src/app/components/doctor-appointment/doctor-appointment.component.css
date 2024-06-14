@@ -1,0 +1,21 @@
+.buttons button {
+  font-size: 14px;
+}
+
+.appointment-list-item {
+  border-bottom: 1px solid #eee;
+}
+
+.tabs button:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.tabs button:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.tabs button:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
