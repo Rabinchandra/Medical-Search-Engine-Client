@@ -119,3 +119,16 @@ form input:hover {
 .text-success {
   font-weight: 300;
 }
+
+/* Side image */
+.side-image {
+  /* border: 1px solid blue; */
+  height: 70vh;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  flex: 1;
+  margin-left: 3em;
+  border-radius: 8px;
+}

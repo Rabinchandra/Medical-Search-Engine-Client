@@ -1,85 +1,84 @@
-<div class="d-flex mx-auto">
-  <section class="w-50 pb-5 mx-auto">
-    <header class="text-center">
-      <h2 class="mt-5">Create an account</h2>
-      <p class="text-secondary pt-2">Sign up now and access more features</p>
-    </header>
-    <form class="w-100 mt-4" (ngSubmit)="onFormSubmit()">
-      @if(failureMessage !== '') {
-      <p class="text-danger">
-        {{ failureMessage }}
-      </p>
-      } @if(successMessage !== '') {
-      <p class="text-success">
-        {{ successMessage }}
-      </p>
-      }
-      <div>
-        <label>Full Name</label>
-        <input
-          type="text"
-          placeholder="Type your full name"
-          [(ngModel)]="patient.name"
-          name="patient_name"
-          required
-        />
-      </div>
-      <div>
-        <label>Birth Date</label>
-        <input
-          type="date"
-          placeholder="Type your birth"
-          [(ngModel)]="patient.birth_date"
-          name="birth_date"
-        />
-      </div>
-      <div>
-        <label>Contact Number</label>
-        <input
-          type="tel"
-          placeholder="Type your contact number"
-          [(ngModel)]="patient.contact_number"
-          name="contact_number"
-        />
-      </div>
-      <div>
-        <label>Address</label>
-        <input
-          type="text"
-          placeholder="Type your address"
-          [(ngModel)]="patient.address"
-          name="address"
-        />
-      </div>
-      <div>
-        <label>Email Address</label>
-        <input
-          type="email"
-          placeholder="Type your email"
-          [(ngModel)]="patient.email"
-          name="email"
-        />
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          placeholder="Type password"
-          [(ngModel)]="patient.password"
-          name="password"
-        />
-      </div>
+<div class="mx-auto">
+  <section class="d-flex align-items-center">
+    <section class="flex-1 pb-5 mx-auto">
+      <header class="">
+        <h2>Create an account</h2>
+        <p class="text-secondary pt-2">Sign up now and access more features</p>
+      </header>
+      <form class="w-100 mt-4" (ngSubmit)="onFormSubmit()">
+        @if(failureMessage !== '') {
+        <p class="text-danger">
+          {{ failureMessage }}
+        </p>
+        } @if(successMessage !== '') {
+        <p class="text-success">
+          {{ successMessage }}
+        </p>
+        }
+        <div>
+          <label>Full Name</label>
+          <input
+            type="text"
+            placeholder="Type your full name"
+            [(ngModel)]="patient.name"
+            name="patient_name"
+            required
+          />
+        </div>
+        <div>
+          <label>Birth Date</label>
+          <input
+            type="date"
+            placeholder="Type your birth"
+            [(ngModel)]="patient.birth_date"
+            name="birth_date"
+          />
+        </div>
+        <div>
+          <label>Contact Number</label>
+          <input
+            type="tel"
+            placeholder="Type your contact number"
+            [(ngModel)]="patient.contact_number"
+            name="contact_number"
+          />
+        </div>
+        <div>
+          <label>Address</label>
+          <input
+            type="text"
+            placeholder="Type your address"
+            [(ngModel)]="patient.address"
+            name="address"
+          />
+        </div>
+        <div>
+          <label>Email Address</label>
+          <input
+            type="email"
+            placeholder="Type your email"
+            [(ngModel)]="patient.email"
+            name="email"
+          />
+        </div>
+        <div>
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Type password"
+            [(ngModel)]="patient.password"
+            name="password"
+          />
+        </div>
 
-      <div>
-        <button type="submit" class="primary-btn w-100">Sign up</button>
-      </div>
-    </form>
+        <div>
+          <button type="submit" class="primary-btn w-100">Sign up</button>
+        </div>
+      </form>
+    </section>
+    <section
+      class="side-image"
+      style="background-image: url('assets/images/woman-2.png')"
+    ></section>
   </section>
-  <!-- <section class="text-right">
-    <img
-      src="https://img.freepik.com/free-photo/young-doctor-man-crossed-arms-pose_1194-9755.jpg?w=996&t=st=1718269322~exp=1718269922~hmac=f42259f3c7f87bca4133195b3126a6c780c11aaa9b15479473ca15ff4e6dc7e3"
-      alt=""
-      style="width: 80%"
-    />
-  </section> -->
 </div>

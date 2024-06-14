@@ -2,15 +2,3 @@ label {
   margin-top: 14px;
 }
 
-.side-image {
-  /* border: 1px solid blue; */
-  height: 70vh;
-  background-image: url(https://e1.pxfuel.com/desktop-wallpaper/327/532/desktop-wallpaper-receiving-care-from-emergency-doctors-in-wailea-medical-doctor.jpg);
-  background-position: center center;
-  background-size: contain;
-  background-repeat: no-repeat;
-
-  flex: 1;
-  margin-left: 3em;
-  border-radius: 8px;
-}
