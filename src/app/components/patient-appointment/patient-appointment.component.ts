@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { IAppointment } from '../../../interface/IAppointment';
 import { formatTime, formatDate } from '../../../utility/utility';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-patient-appointment',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './patient-appointment.component.html',
   styleUrl: './patient-appointment.component.css',
 })

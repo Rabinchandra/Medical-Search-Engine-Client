@@ -6,6 +6,7 @@
         <td>Date</td>
         <td>Time</td>
         <td>Doctor</td>
+        <td>Purpose</td>
         <td>Status</td>
         <td>Actions</td>
       </tr>
@@ -16,11 +17,13 @@
         <td class="text-center">{{ _formatDate(app.appointment_date) }}</td>
         <td class="text-center">{{ _formatTime(app.appointment_time) }}</td>
         <td class="text-center">Dr. James Bob</td>
+        <td class="text-center">{{ app.purpose }}</td>
         <td class="text-center">{{ app.status }}</td>
         <td class="text-right px-4" style="width: 230px">
           @if(app.status != 'pending') {
-          <button class="success-btn cursor-pointer">Join Meeting</button>
-
+          <a [routerLink]="['/meeting']">
+            <button class="success-btn cursor-pointer">Join Meeting</button></a
+          >
           }
           <button class="primary-btn ml-3 cursor-pointer">Cancel</button>
         </td>

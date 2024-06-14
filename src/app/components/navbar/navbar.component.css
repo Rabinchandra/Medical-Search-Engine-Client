@@ -22,6 +22,7 @@ a:hover {
 }
 
 nav {
+  z-index: 100;
   top: 0;
   position: sticky;
   background-color: #fff;

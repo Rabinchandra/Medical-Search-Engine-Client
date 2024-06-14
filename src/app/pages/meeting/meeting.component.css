@@ -1,0 +1,9 @@
+section {
+  height: 80vh;
+  width: 80%;
+  margin: auto;
+}
+
+video {
+  min-height: 600px;
+}
