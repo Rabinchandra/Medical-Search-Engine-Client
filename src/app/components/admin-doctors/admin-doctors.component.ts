@@ -13,12 +13,10 @@ export class AdminDoctorsComponent {
   doctors: IDoctor[] = [
     {
       doctor_id: 1,
-      user_id: '123456',
       name: 'Dr. John Doe',
       specialty: 'Cardiology',
       contact_number: '+1234567890',
       email: 'johndoe@example.com',
-      clinic_address: '123 Main St, City',
       availability: 'Monday 9AM-5PM, Tuesday 10AM-6PM',
       profileImg:
         'https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=926&fit=clip',
@@ -26,12 +24,10 @@ export class AdminDoctorsComponent {
     },
     {
       doctor_id: 2,
-      user_id: '234567',
       name: 'Dr. Jane Smith',
       specialty: 'Dermatology',
       contact_number: '+1987654321',
       email: 'janesmith@example.com',
-      clinic_address: '456 Elm St, Town',
       availability: 'Wednesday 8AM-4PM, Thursday 9AM-5PM',
       profileImg:
         'https://media.istockphoto.com/id/177373093/photo/indian-male-doctor.jpg?s=612x612&w=0&k=20&c=5FkfKdCYERkAg65cQtdqeO_D0JMv6vrEdPw3mX1Lkfg=',
@@ -39,12 +35,10 @@ export class AdminDoctorsComponent {
     },
     {
       doctor_id: 3,
-      user_id: '345678',
       name: 'Dr. David Brown',
       specialty: 'Pediatrics',
       contact_number: '+1122334455',
       email: 'davidbrown@example.com',
-      clinic_address: '789 Oak St, Village',
       availability: 'Friday 10AM-6PM, Saturday 8AM-2PM',
       profileImg:
         'https://media.istockphoto.com/id/1292015214/photo/portrait-female-doctor-stock-photo.jpg?s=612x612&w=0&k=20&c=nr4XaWnRPQnWqwhzahajZhskIDG1yK9DmIteV5gpUOI=',
@@ -52,12 +46,10 @@ export class AdminDoctorsComponent {
     },
     {
       doctor_id: 4,
-      user_id: '456789',
       name: 'Dr. Sarah Lee',
       specialty: 'Obstetrics and Gynecology',
       contact_number: '+15556667777',
       email: 'sarahlee@example.com',
-      clinic_address: '101 Pine St, City',
       availability: 'Monday 10AM-4PM, Wednesday 11AM-7PM',
       profileImg:
         'https://us.123rf.com/450wm/jackf/jackf2401/jackf240116525/223566665-smiling-female-doctor-in-white-uniform-standing-with-notebooks.jpg?ver=6',
@@ -65,12 +57,10 @@ export class AdminDoctorsComponent {
     },
     {
       doctor_id: 5,
-      user_id: '567890',
       name: 'Dr. Michael Johnson',
       specialty: 'Orthopedics',
       contact_number: '+14443332222',
       email: 'michaeljohnson@example.com',
-      clinic_address: '202 Maple St, Town',
       availability: 'Tuesday 9AM-3PM, Thursday 10AM-4PM',
       profileImg:
         'https://img.freepik.com/free-photo/attractive-medical-professional-uniform-standing-with-arms-crossed-against-isolated-background_662251-416.jpg?size=626&ext=jpg&ga=GA1.1.1518270500.1717977600&semt=ais_user',

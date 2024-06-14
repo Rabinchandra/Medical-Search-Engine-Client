@@ -90,6 +90,10 @@ label {
   font-weight: 500;
 }
 
+form {
+  min-width: 400px;
+}
+
 form > div,
 form label {
   display: block;
