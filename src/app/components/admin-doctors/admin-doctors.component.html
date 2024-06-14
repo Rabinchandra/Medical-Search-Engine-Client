@@ -1,0 +1,65 @@
+<section>
+  <h2>List of Doctors</h2>
+  <section class="d-flex align-items-center mt-5">
+    <!-- Search -->
+    <div
+      class="d-flex cursor-pointer align-items-center search-wrapper"
+      style="width: 400px"
+    >
+      <input
+        type="text"
+        placeholder="Search doctor..."
+        class="border-0 flex-1"
+      />
+      <i class="fi fi-rr-search d-block mt-1 search-icon d-block px-4"></i>
+    </div>
+    <a [routerLink]="['/admin-add-doctor']">
+      <button class="success-btn cursor-pointer mx-4">
+        <i class="fi fi-rr-user-add"></i> Add Doctor
+      </button>
+    </a>
+  </section>
+
+  <section class="mt-5">
+    @for(doctor of doctors; track doctor) {
+    <div class="d-flex mb-3 doctor-list-item py-4">
+      <section class="flex-1 d-flex">
+        <div
+          [style.background-image]="'url(' + doctor.profileImg + ')'"
+          class="img rounded-circle"
+        ></div>
+        <div class="details ml-4">
+          <h4>{{ doctor.name }}</h4>
+          <div class="mt-3">
+            <b>Speciality: </b>
+            <span>{{ doctor.specialty }}</span>
+          </div>
+          <div class="py-1">
+            <b>Email: </b>
+            <span>
+              {{ doctor.email }}
+            </span>
+          </div>
+          <div class="">
+            <b>Contact: </b>
+            <span>
+              {{ doctor.contact_number }}
+            </span>
+          </div>
+          <div class="ratings">
+            <i class="fi fi-ss-star"></i>
+            <i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i
+            ><i class="fi fi-ss-star"></i>
+          </div>
+        </div>
+      </section>
+      <section class="buttons text-right">
+        <button class="primary-btn mx-2">
+          <i class="fi fi-rr-pencil"></i>
+        </button>
+        <button class="danger-btn"><i class="fi fi-rr-trash"></i></button>
+      </section>
+    </div>
+    }
+  </section>
+</section>

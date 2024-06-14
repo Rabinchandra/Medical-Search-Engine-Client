@@ -1,0 +1,26 @@
+.img {
+  width: 100px;
+  height: 100px;
+
+  background-position: center center;
+  background-size: cover;
+}
+
+.doctor-list-item {
+  border-bottom: 1px solid #eee;
+}
+
+.ratings {
+  margin-top: 10px;
+}
+
+.buttons {
+  text-align: right;
+}
+
+.search-wrapper {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 14px;
+}

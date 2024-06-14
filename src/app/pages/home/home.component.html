@@ -31,7 +31,10 @@
     </section>
 
     <section class="profile mt-5 text-secondary">
-      <div class="profile-wrapper mb-3"></div>
+      <div
+        [style.background-image]="'url(' + currentUser?.photoURL || '' + ')'"
+        class="profile-wrapper rounded-circle"
+      ></div>
       <h6>
         @if(currentUser == null) { Anonymous User } @else {
         {{ currentUser.displayName }}

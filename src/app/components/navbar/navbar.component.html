@@ -9,19 +9,22 @@
     <li>
       <a [routerLink]="['consult-doctor']">Consult a doctor</a>
     </li>
-    } @else if(currentUser?.role == 'admin') {
+    } @else if(currentUser && currentUser.role == 'admin') {
     <li>
-      <a [routerLink]="['consult-doctor']">Doctors</a>
+      <a [routerLink]="['admin-doctors']">Doctors</a>
     </li>
     <li>
-      <a [routerLink]="['consult-doctor']">Patients</a>
+      <a [routerLink]="['admin-patients']">Patients</a>
     </li>
     }
 
     <!--  -->
+    @if(currentUser !== null) {
     <li>
       <a [routerLink]="['appointment']">Appointments</a>
     </li>
+
+    }
 
     <li>
       <a href="#">Records</a>

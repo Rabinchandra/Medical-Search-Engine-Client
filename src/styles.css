@@ -26,6 +26,10 @@ body {
   flex: 1;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 /* Buttons */
 button {
   border: none;
