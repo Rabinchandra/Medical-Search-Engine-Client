@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
+import { IPatient } from '../../../interface/IPatient';
 
 @Component({
   selector: 'app-signup',
@@ -12,14 +13,16 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class SignupComponent {
   // Patient Attributes
-  patient = {
+  patient: IPatient = {
+    patientId: '',
     name: '',
-    birth_date: '',
-    contact_number: '',
+    birthDate: '',
+    contactNumber: '',
     email: '',
     password: '',
     address: '',
-    medical_history: '',
+    medicalHistory: '',
+    profileImgUrl: '',
   };
 
   failureMessage = '';
@@ -29,11 +32,11 @@ export class SignupComponent {
 
   onFormSubmit() {
     console.log('Forms submitted');
-    console.log(this.patient.email);
+    console.log(this.patient);
 
     // Create a user with the given email and password
     this.authService
-      .createUser(this.patient.email, this.patient.password, this.patient.name)
+      .createPatient(this.patient)
       .then((res) => {
         console.log(res);
 

@@ -39,10 +39,18 @@
       </a>
       } @else {
       <section class="profile-wrapper">
-        <div
+        <!-- <div
           [style.background-image]="'url(' + currentUser.photoURL + ')'"
           class="profile rounded-circle"
-        ></div>
+        ></div> -->
+        <img
+          [src]="currentUser.photoURL"
+          alt=""
+          width="50"
+          height="50"
+          style="object-fit: cover"
+          class="profile rounded-circle"
+        />
         <div class="logout" (click)="onLogout()">Log out</div>
       </section>
 

@@ -30,7 +30,7 @@
           <input
             type="date"
             placeholder="Type your birth"
-            [(ngModel)]="patient.birth_date"
+            [(ngModel)]="patient.birthDate"
             name="birth_date"
           />
         </div>
@@ -39,7 +39,7 @@
           <input
             type="tel"
             placeholder="Type your contact number"
-            [(ngModel)]="patient.contact_number"
+            [(ngModel)]="patient.contactNumber"
             name="contact_number"
           />
         </div>
@@ -68,6 +68,16 @@
             placeholder="Type password"
             [(ngModel)]="patient.password"
             name="password"
+          />
+        </div>
+
+        <div>
+          <label>Profile Image URL</label>
+          <input
+            type="text"
+            placeholder="Type your profile image url"
+            [(ngModel)]="patient.profileImgUrl"
+            name="address"
           />
         </div>
 

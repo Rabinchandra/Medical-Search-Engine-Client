@@ -2,43 +2,71 @@ import { Injectable } from '@angular/core';
 import {
   User,
   createUserWithEmailAndPassword,
+  deleteUser,
   signInWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
 import { auth } from '../firebase/config';
 import { FirebaseError } from 'firebase/app';
 import { IUser } from '../../interface/IUser';
+import { IPatient } from '../../interface/IPatient';
+import { IDoctor } from '../../interface/IDoctor';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  createUser(
-    email: string,
-    password: string,
-    username: string
-  ): Promise<IUser | null> {
-    console.log('Creating user...');
+  // Api Urls
+  private patientSignupApiUrl = 'https://localhost:7075/api/signup/patient';
+
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+
+  createPatient(patient: IPatient): Promise<IUser | null> {
+    console.log('Creating patient...');
 
     return new Promise(async (resolve, reject) => {
       try {
         const userCredential = await createUserWithEmailAndPassword(
           auth,
-          email,
-          password
+          patient.email,
+          patient.password
         );
 
         const user = userCredential.user;
 
         updateProfile(user, {
-          displayName: username,
-          photoURL:
-            'https://img.freepik.com/premium-photo/young-black-man-smiling-very-happily-profile-photo-with-orange-colors-created-with-ai_116400-41.jpg',
+          displayName: patient.name,
+          photoURL: patient.profileImgUrl,
         });
 
-        resolve(user);
+        // Update the Patient id
+        patient.patientId = user.uid;
+
+        // Create a patient to the SQL Server Database
+
+        this.http
+          .post(
+            this.patientSignupApiUrl,
+            JSON.stringify(patient),
+            this.httpOptions
+          )
+          .subscribe({
+            next: (res) => {
+              console.log(res);
+              resolve(user);
+            },
+            error: (err) => {
+              console.log(err);
+              deleteUser(user);
+            },
+          });
       } catch (error) {
         if (error instanceof FirebaseError) {
           let msg = error.code;
