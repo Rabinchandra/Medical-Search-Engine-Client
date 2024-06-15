@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AuthenticationService } from '../../services/authentication.service';
 import { IPatient } from '../../../interface/IPatient';
+import { SignupService } from '../../services/signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -28,14 +28,14 @@ export class SignupComponent {
   failureMessage = '';
   successMessage = '';
 
-  constructor(private authService: AuthenticationService) {}
+  constructor(private signupService: SignupService) {}
 
   onFormSubmit() {
     console.log('Forms submitted');
     console.log(this.patient);
 
     // Create a user with the given email and password
-    this.authService
+    this.signupService
       .createPatient(this.patient)
       .then((res) => {
         console.log(res);
