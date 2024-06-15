@@ -5,6 +5,6 @@ export interface IDoctor {
   contact_number?: string;
   email?: string;
   availability?: string;
-  profileImg?: string;
+  profileImgUrl?: string;
   rating?: number;
 }

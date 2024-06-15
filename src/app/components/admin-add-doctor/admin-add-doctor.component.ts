@@ -16,7 +16,7 @@ export class AdminAddDoctorComponent {
     availability: '',
     contact_number: '',
     email: '',
-    profileImg: '',
+    profileImgUrl: '',
     rating: 4,
     specialty: '',
   };
