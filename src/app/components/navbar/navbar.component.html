@@ -18,12 +18,16 @@
     </li>
     }
 
-    <!--  -->
-    @if(currentUser !== null) {
+    <!-- appointments -->
+    @if(currentUser !== null && currentUser.role == 'patient' ||
+    currentUser?.role == 'admin') {
     <li>
       <a [routerLink]="['appointment']">Appointments</a>
     </li>
-
+    } @else if(currentUser?.role == 'doctor') {
+    <li>
+      <a [routerLink]="['doctor-appointment']">Appointments</a>
+    </li>
     }
 
     <li>
@@ -39,12 +43,11 @@
       </a>
       } @else {
       <section class="profile-wrapper">
-        <!-- <div
-          [style.background-image]="'url(' + currentUser.photoURL + ')'"
-          class="profile rounded-circle"
-        ></div> -->
         <img
-          [src]="currentUser.photoURL"
+          [src]="
+            currentUser.photoURL ||
+            'https://img.freepik.com/premium-photo/young-black-man-smiling-very-happily-profile-photo-with-orange-colors-created-with-ai_116400-41.jpg'
+          "
           alt=""
           width="50"
           height="50"
