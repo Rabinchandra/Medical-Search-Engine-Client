@@ -1,10 +1,21 @@
 export interface IDoctor {
-  doctor_id: number;
+  doctorId: string;
   name: string;
-  specialty?: string;
-  contact_number?: string;
+  speciality?: string;
+  contactNumber?: string;
   email?: string;
-  availability?: string;
+  password?: string;
+  availability?: number;
   profileImgUrl?: string;
   rating?: number;
 }
+
+// {
+//   "doctorId": "doc",
+//   "name": "test dr",
+//   "speciality": "string",
+//   "contactNumber": "string",
+//   "email": "ssssd",
+//   "availability": 0,
+//   "password": "test",
+// }

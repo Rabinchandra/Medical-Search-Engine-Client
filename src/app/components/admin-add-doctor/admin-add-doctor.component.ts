@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IDoctor } from '../../../interface/IDoctor';
 import { FormsModule } from '@angular/forms';
+import { SignupService } from '../../services/signup.service';
 
 @Component({
   selector: 'app-admin-add-doctor',
@@ -11,21 +12,35 @@ import { FormsModule } from '@angular/forms';
 })
 export class AdminAddDoctorComponent {
   doctor: IDoctor = {
-    doctor_id: 0,
+    doctorId: '0',
     name: '',
-    availability: '',
-    contact_number: '',
+    availability: 1,
+    contactNumber: '',
     email: '',
+    password: '',
     profileImgUrl: '',
-    rating: 4,
-    specialty: '',
+    speciality: '',
   };
 
-  password: string = '';
+  // {
+  //   "doctorId": "JgBGjgc0SNWbl43xvsbb2TVrXCx2",
+  //   "name": "Dr. Klalen",
+  //   "speciality": "Neurologist",
+  //   "contactNumber": "+81555555555",
+  //   "email": "klalen@gmail.com",
+  //   "availability": 1,
+  //   "profileImgUrl": "testurl.com"
+  // }
+
+  constructor(private signupService: SignupService) {}
 
   onFormSubmit() {
     // Create the user first in the firebase
     // Then post the data to the SQL database
-    console.log(this.doctor);
+    console.log('Submit', this.doctor);
+
+    this.signupService.createDoctor(this.doctor).then((res) => {
+      console.log(res);
+    });
   }
 }
