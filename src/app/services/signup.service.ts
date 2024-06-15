@@ -47,7 +47,6 @@ export class SignupService {
         patient.patientId = user.uid;
 
         // Create a patient to the SQL Server Database
-
         this.http
           .post(
             this.patientSignupApiUrl,
@@ -61,35 +60,40 @@ export class SignupService {
             },
             error: (err) => {
               console.log(err);
+              // Delete the user from firebase if user was not succesfully created in the SQL database
               deleteUser(user);
             },
           });
       } catch (error) {
         if (error instanceof FirebaseError) {
-          let msg = error.code;
-          // Checking for types of error
-          switch (msg) {
-            case 'auth/invalid-email':
-              msg = 'Please provide a valid Email';
-              break;
-            case 'auth/weak-password':
-              msg = 'Password is weak';
-              break;
-            case 'auth/missing-password':
-              msg = 'Your should fill the password';
-              break;
-            case 'auth/email-already-in-use':
-              msg = 'Email already in use. Try other email';
-              break;
-            default:
-              msg = msg;
-          }
-
+          let msg = this.getFirebaseErrorType(error.code);
           reject(msg);
         } else {
           reject('Something went wrong!');
         }
       }
     });
+  }
+
+  getFirebaseErrorType(msg: string) {
+    // Checking for types of error
+    switch (msg) {
+      case 'auth/invalid-email':
+        msg = 'Please provide a valid Email';
+        break;
+      case 'auth/weak-password':
+        msg = 'Password is weak';
+        break;
+      case 'auth/missing-password':
+        msg = 'Your should fill the password';
+        break;
+      case 'auth/email-already-in-use':
+        msg = 'Email already in use. Try other email';
+        break;
+      default:
+        msg = msg;
+    }
+
+    return msg;
   }
 }
