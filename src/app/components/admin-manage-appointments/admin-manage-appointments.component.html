@@ -48,10 +48,24 @@
         <button class="danger-btn mx-2">
           <i class="fi fi-ss-cross"></i>
         </button>
-        <button class="primary-btn">
-          <i class="fi fi-rr-phone-call d-inline-block mr-2"></i> Call the
-          patient
+
+        <!-- Call button -->
+        @if(app.callStatus == "started") {
+        <button class="primary-btn" (click)="makeAudioCall(app)">
+          <i class="fi fi-rr-phone-call d-inline-block mr-2"></i>
+          Calling...
         </button>
+        } @else if(app.callStatus == 'call made') {
+        <button class="success-btn" (click)="makeAudioCall(app)">
+          <i class="fi fi-rr-phone-call d-inline-block mr-2"></i>
+          Call Made
+        </button>
+        } @else {
+        <button class="primary-btn" (click)="makeAudioCall(app)">
+          <i class="fi fi-rr-phone-call d-inline-block mr-2"></i>
+          Call the patient
+        </button>
+        }
       </section>
     </div>
     }
