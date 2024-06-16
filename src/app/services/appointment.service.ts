@@ -42,4 +42,8 @@ export class AppointmentService {
       this.httpOptions
     );
   }
+
+  acceptAppointment(appointmentId: number) {
+    return this.http.get(`${this.appointmentApiUrl}/accept/${appointmentId}`);
+  }
 }

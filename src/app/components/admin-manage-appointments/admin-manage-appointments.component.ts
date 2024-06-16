@@ -3,6 +3,7 @@ import { AppointmentService } from '../../services/appointment.service';
 import { PatientService } from '../../services/patient.service';
 import { IAppointmentDetails } from '../../../interface/IAppointmentDetails';
 import { VoiceCallService } from '../../services/voice-call.service';
+import { CommonModule } from '@angular/common';
 
 interface IAppointmentWithCallStatus extends IAppointmentDetails {
   callStatus?: string;
@@ -17,6 +18,8 @@ interface IAppointmentWithCallStatus extends IAppointmentDetails {
 })
 export class AdminManageAppointmentsComponent {
   appointments: IAppointmentWithCallStatus[] = [];
+  pendingAppointments: IAppointmentWithCallStatus[] = [];
+  acceptedAppointments: IAppointmentWithCallStatus[] = [];
 
   constructor(
     private appointmentService: AppointmentService,
@@ -26,6 +29,8 @@ export class AdminManageAppointmentsComponent {
   ngOnInit() {
     this.appointmentService.getAllAppointmentsDetails().subscribe((result) => {
       this.appointments = result;
+      this.acceptedAppointments = result.filter((a) => a.status == 'accepted');
+      this.pendingAppointments = result.filter((a) => a.status == 'pending');
     });
   }
 
@@ -38,10 +43,10 @@ export class AdminManageAppointmentsComponent {
   makeAudioCall(currentAppointment: IAppointmentWithCallStatus) {
     console.log('calling...');
     const currentAppointmentIndex =
-      this.appointments.indexOf(currentAppointment);
+      this.pendingAppointments.indexOf(currentAppointment);
 
-    // Change the call status of the appointment to call started
-    this.appointments[currentAppointmentIndex].callStatus = 'started';
+    // Change the call status of the appointment to call started - to reflect in tne UI
+    this.pendingAppointments[currentAppointmentIndex].callStatus = 'started';
 
     const phoneNumber = '+916009383347';
 
@@ -49,7 +54,8 @@ export class AdminManageAppointmentsComponent {
       // Update the call status
       setTimeout(
         () =>
-          (this.appointments[currentAppointmentIndex].callStatus = 'call made'),
+          (this.pendingAppointments[currentAppointmentIndex].callStatus =
+            'call made'),
         6000
       )
     );
@@ -57,6 +63,22 @@ export class AdminManageAppointmentsComponent {
 
   // Method to accept an appointment
   acceptAppointment(app: IAppointmentWithCallStatus) {
-    
+    if (
+      confirm(
+        `Are you sure you want to accept appointment of ${app.patientName}?`
+      )
+    ) {
+      if (app.appointmentId) {
+        const currentAppointmentIndex = this.pendingAppointments.indexOf(app);
+
+        this.appointmentService
+          .acceptAppointment(app.appointmentId)
+          .subscribe((res) => {
+            // Update the status to reflect in the UI
+            this.pendingAppointments[currentAppointmentIndex].status =
+              'accepted';
+          });
+      }
+    }
   }
 }

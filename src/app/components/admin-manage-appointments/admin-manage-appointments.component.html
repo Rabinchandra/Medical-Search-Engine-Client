@@ -13,12 +13,15 @@
       Accepted Appointments
     </button>
   </div>
+
   @if(currentTab == 'pending') {
 
   <!-- Pending -->
   <section class="pending-appointments">
     <h4 class="mb-4">Pending Appointments</h4>
-    @for(app of appointments; track app) {
+
+    @for(app of pendingAppointments; track app) {
+
     <div class="d-flex mb-5 appointment-list-item py-4">
       <section class="flex-1 d-flex">
         <div
@@ -42,15 +45,26 @@
       </section>
 
       <section class="buttons">
-        <button class="success-btn text-center">
+        <!-- Accept button -->
+        @if(app.status !== 'accepted') {
+        <button
+          class="success-btn text-center"
+          (click)="acceptAppointment(app)"
+        >
           <i class="fi fi-rr-check"></i>
         </button>
+        <!-- Reject button -->
         <button class="danger-btn mx-2">
           <i class="fi fi-ss-cross"></i>
         </button>
+        }
 
+        <!-- If admin has accepted -->
+        @if(app.status == 'accepted') {
+        <button class="success-btn">Accepted</button>
+        } @else {
         <!-- Call button -->
-        @if(app.callStatus == "started") {
+        @if( app.callStatus == "started") {
         <button class="primary-btn" (click)="makeAudioCall(app)">
           <i class="fi fi-rr-phone-call d-inline-block mr-2"></i>
           Calling...
@@ -65,15 +79,49 @@
           <i class="fi fi-rr-phone-call d-inline-block mr-2"></i>
           Call the patient
         </button>
-        }
+        } }
       </section>
     </div>
     }
   </section>
+
   } @else if(currentTab == 'accepted') {
   <!-- Appointed -->
   <section class="appointed">
     <h4>Accepted Patient</h4>
+
+    <!-- here -->
+
+    @for(app of acceptedAppointments; track app) {
+
+    <div class="d-flex mb-5 appointment-list-item py-4">
+      <section class="flex-1 d-flex">
+        <div
+          [style.background-image]="'url(' + app.patientImgUrl + ')'"
+          class="profile-img rounded-circle"
+        ></div>
+        <!-- Details -->
+        <div class="details ml-4">
+          <h3 class="mb-2">{{ app.patientName }}</h3>
+          <div class="py-1 text-secondary">
+            <b>Doctor Name: </b>
+            <span>
+              {{ app.doctorName }}
+            </span>
+          </div>
+          <div class="text-secondary">
+            <b>Contact: </b>
+            <span> {{ app.patientContact }} </span>
+          </div>
+        </div>
+      </section>
+      <div>
+        <button class="success-btn">Accepted</button>
+      </div>
+    </div>
+    }
+
+    <!-- here -->
   </section>
 
   }

@@ -1,5 +1,5 @@
 export interface IAppointmentDetails {
-  appointmentId?: string;
+  appointmentId?: number;
   doctorId?: string;
   patientId?: string;
   doctorName: string;
