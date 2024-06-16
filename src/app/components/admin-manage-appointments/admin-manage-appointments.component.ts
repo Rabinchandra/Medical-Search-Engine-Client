@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AppointmentService } from '../../services/appointment.service';
+import { PatientService } from '../../services/patient.service';
+import { IAppointmentDetails } from '../../../interface/IAppointmentDetails';
 
 @Component({
   selector: 'app-admin-manage-appointments',
@@ -8,29 +11,15 @@ import { Component } from '@angular/core';
   styleUrl: './admin-manage-appointments.component.css',
 })
 export class AdminManageAppointmentsComponent {
-  patients = [
-    {
-      patientName: 'Mary Doe',
-      doctorName: 'Dr. James Kelvin',
-      profileImg:
-        'https://i.pinimg.com/564x/4b/b9/d9/4bb9d9aea543288e30cd77a345a8f948.jpg',
-      status: 'pending',
-    },
-    {
-      patientName: 'Kelvin Lcien',
-      doctorName: 'Dr. James Kelvin',
-      profileImg:
-        'https://i.pinimg.com/564x/4b/b9/d9/4bb9d9aea543288e30cd77a345a8f948.jpg',
-      status: 'pending',
-    },
-    {
-      patientName: 'Lucifer',
-      doctorName: 'Dr. James Kelvin',
-      profileImg:
-        'https://i.pinimg.com/564x/4b/b9/d9/4bb9d9aea543288e30cd77a345a8f948.jpg',
-      status: 'pending',
-    },
-  ];
+  appointments: IAppointmentDetails[] = [];
+
+  constructor(private appointmentService: AppointmentService) {}
+
+  ngOnInit() {
+    this.appointmentService.getAllAppointmentsDetails().subscribe((result) => {
+      this.appointments = result;
+    });
+  }
 
   currentTab = 'pending';
 

@@ -13,22 +13,7 @@ import { UserService } from '../../services/user.service';
   styleUrl: './patient-appointment.component.css',
 })
 export class PatientAppointmentComponent {
-  appointments: IAppointment[] = [
-    /*{
-      appointmentId: 1,
-      appointmentDate: '2024-06-14',
-      appointmentTime: '10:00:00', // Time portion only
-      status: 'accepted',
-      purpose: 'Dental Checkup',
-    },
-    {
-      appointmentId: 2,
-      appointmentDate: '2024-06-14',
-      appointmentTime: '10:00:00', // Time portion only
-      status: 'pending',
-      purpose: 'Business Meeting',
-    }, */
-  ];
+  appointments: IAppointment[] = [];
 
   constructor(
     private appointmentService: AppointmentService,

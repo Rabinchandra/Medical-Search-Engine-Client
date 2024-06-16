@@ -18,25 +18,25 @@
   <!-- Pending -->
   <section class="pending-appointments">
     <h4 class="mb-4">Pending Appointments</h4>
-    @for(patient of patients; track patient) {
+    @for(app of appointments; track app) {
     <div class="d-flex mb-5 appointment-list-item py-4">
       <section class="flex-1 d-flex">
         <div
-          [style.background-image]="'url(' + patient.profileImg + ')'"
+          [style.background-image]="'url(' + app.patientImgUrl + ')'"
           class="profile-img rounded-circle"
         ></div>
         <!-- Details -->
         <div class="details ml-4">
-          <h3 class="mb-2">{{ patient.patientName }}</h3>
+          <h3 class="mb-2">{{ app.patientName }}</h3>
           <div class="py-1 text-secondary">
             <b>Doctor Name: </b>
             <span>
-              {{ patient.doctorName }}
+              {{ app.doctorName }}
             </span>
           </div>
           <div class="text-secondary">
             <b>Contact: </b>
-            <span> +9150232412312 </span>
+            <span> {{ app.patientContact }} </span>
           </div>
         </div>
       </section>
