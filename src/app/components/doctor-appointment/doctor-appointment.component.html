@@ -36,8 +36,8 @@
       <tbody>
         @for(app of appointments; track app) {
         <tr>
-          <td class="text-center">{{ _formatDate(app.appointment_date) }}</td>
-          <td class="text-center">{{ _formatTime(app.appointment_time) }}</td>
+          <td class="text-center">{{ app.appointmentDate }}</td>
+          <td class="text-center">{{ app.appointmentTime }}</td>
           <td class="text-center">Dr. James Bob</td>
           <td class="text-center">{{ app.purpose }}</td>
           <td class="text-center">{{ app.status }}</td>

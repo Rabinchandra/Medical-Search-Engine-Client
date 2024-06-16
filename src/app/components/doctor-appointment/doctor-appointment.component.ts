@@ -19,33 +19,25 @@ export class DoctorAppointmentComponent {
 
   appointments: IAppointment[] = [
     {
-      appointment_id: 1,
-      appointment_date: new Date('2024-06-14'),
-      appointment_time: new Date('2024-06-14T09:00:00'), // Time portion only
+      appointmentId: 1,
+      appointmentDate: '2024-06-14',
+      appointmentTime: '10:00:00', // Time portion only
       status: 'accepted',
       purpose: 'Dental Checkup',
     },
     {
-      appointment_id: 2,
-      appointment_date: new Date('2024-06-15'),
-      appointment_time: new Date('2024-06-15T14:30:00'), // Time portion only
+      appointmentId: 2,
+      appointmentDate: '2024-06-14',
+      appointmentTime: '10:00:00', // Time portion only
       status: 'pending',
       purpose: 'Business Meeting',
     },
     {
-      appointment_id: 3,
-      appointment_date: new Date('2024-06-16'),
-      appointment_time: new Date('2024-06-16T11:00:00'), // Time portion only
+      appointmentId: 3,
+      appointmentDate: '2024-06-14',
+      appointmentTime: '10:00:00', // Time portion only
       status: 'pending',
       purpose: 'Consultation',
     },
   ];
-
-  _formatTime(input: Date) {
-    return formatTime(input);
-  }
-
-  _formatDate(input: Date) {
-    return formatDate(input);
-  }
 }

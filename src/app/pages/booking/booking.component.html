@@ -1,50 +1,57 @@
 <section>
-    <h2>Make an Appointment</h2>
-    <div class="wrapper d-flex">
-      <form>
-        <div>
-          <label for="purpose">Purpose</label>
-          <input type="text" placeholder="Type the purpose of appointment" />
+  <h2>Make an Appointment</h2>
+  <div class="wrapper d-flex">
+    <form (ngSubmit)="book()">
+      <div>
+        <label for="purpose">Purpose</label>
+        <input
+          type="text"
+          placeholder="Type the purpose of appointment"
+          [(ngModel)]="appointment.purpose"
+          name="purpose"
+          required
+        />
+      </div>
+      <div>
+        <label for="appointment_date">Appointment Date & Time</label>
+        <input
+          type="datetime-local"
+          [(ngModel)]="dateTime"
+          name="dateTime"
+          required
+        />
+      </div>
+      <div>
+        <button class="d-block primary-btn">Make an appointment request</button>
+      </div>
+    </form>
+    <!--  -->
+    <section class="flex-1 text-center">
+      <h3>Doctor Details</h3>
+      <div
+        [style.background-image]="
+          'url(' +
+          'https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=926&fit=clip' +
+          ')'
+        "
+        class="profile-img rounded-circle d-inline-block mt-4"
+      ></div>
+      <div class="details ml-4 mt-5">
+        <h4>John</h4>
+        <div class="mt-3">
+          <b>Speciality: </b>
+          <span>Cardiology</span>
         </div>
-        <div>
-          <label for="appointment_date">Appointment Date & Time</label>
-          <input
-            type="datetime-local"
-            placeholder="Type the purpose of appointment"
-          />
+        <div class="py-1">
+          <b>Email: </b>
+          <span> test.com </span>
         </div>
-        <div>
-          <button class="d-block primary-btn">Make an appointment request</button>
+        <div class="ratings">
+          <i class="fi fi-ss-star"></i>
+          <i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i
+          ><i class="fi fi-ss-star"></i>
         </div>
-      </form>
-      <!--  -->
-      <section class="flex-1 text-center">
-        <h3>Doctor Details</h3>
-        <div
-          [style.background-image]="
-            'url(' +
-            'https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=926&fit=clip' +
-            ')'
-          "
-          class="profile-img rounded-circle d-inline-block mt-4"
-        ></div>
-        <div class="details ml-4 mt-5">
-          <h4>John</h4>
-          <div class="mt-3">
-            <b>Speciality: </b>
-            <span>Cardiology</span>
-          </div>
-          <div class="py-1">
-            <b>Email: </b>
-            <span> test.com </span>
-          </div>
-          <div class="ratings">
-            <i class="fi fi-ss-star"></i>
-            <i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i
-            ><i class="fi fi-ss-star"></i>
-          </div>
-        </div>
-      </section>
-    </div>
-  </section>
-  
+      </div>
+    </section>
+  </div>
+</section>
