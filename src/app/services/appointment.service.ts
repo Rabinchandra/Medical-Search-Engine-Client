@@ -10,6 +10,7 @@ export class AppointmentService {
 
   // api url
   private appointmentApiUrl = `https://localhost:7104/api/appointment`;
+  private patientAppointmentApiUrl = `https://localhost:7104/api/appointment/patient/`;
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -17,8 +18,12 @@ export class AppointmentService {
     }),
   };
 
+  // Method that returns all the appointments of a particular patient
   getAllPatientAppointments(patientId: string) {
     console.log('patient appointments', patientId);
+    return this.http.get<IAppointment[]>(
+      this.patientAppointmentApiUrl + patientId
+    );
   }
 
   makeAppointment(apppointment: IAppointment) {
@@ -29,12 +34,5 @@ export class AppointmentService {
       JSON.stringify(apppointment),
       this.httpOptions
     );
-    // {
-    //   "doctorId": "string",
-    //   "patientId": "string",
-    //   "appointmentDate": "2024-03-20"
-    //   "appointmentTime": "hh:tt:ss"
-    //   "purpose": "string"
-    // }
   }
 }

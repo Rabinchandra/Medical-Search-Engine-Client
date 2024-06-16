@@ -14,7 +14,7 @@ import { UserService } from '../../services/user.service';
 })
 export class PatientAppointmentComponent {
   appointments: IAppointment[] = [
-    {
+    /*{
       appointmentId: 1,
       appointmentDate: '2024-06-14',
       appointmentTime: '10:00:00', // Time portion only
@@ -27,7 +27,7 @@ export class PatientAppointmentComponent {
       appointmentTime: '10:00:00', // Time portion only
       status: 'pending',
       purpose: 'Business Meeting',
-    },
+    }, */
   ];
 
   constructor(
@@ -38,7 +38,9 @@ export class PatientAppointmentComponent {
   ngOnInit() {
     const user = this.userService.currentUser;
     if (user) {
-      this.appointmentService.getAllPatientAppointments(user.uid);
+      this.appointmentService
+        .getAllPatientAppointments(user.uid)
+        .subscribe((app) => (this.appointments = app));
     }
   }
 }
