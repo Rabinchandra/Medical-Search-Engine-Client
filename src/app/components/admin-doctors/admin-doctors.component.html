@@ -57,7 +57,9 @@
         <button class="primary-btn mx-2">
           <i class="fi fi-rr-pencil"></i>
         </button>
-        <button class="danger-btn"><i class="fi fi-rr-trash"></i></button>
+        <button class="danger-btn" (click)="onRemoveDoctor(doctor.doctorId)">
+          <i class="fi fi-rr-trash"></i>
+        </button>
       </section>
     </div>
     }

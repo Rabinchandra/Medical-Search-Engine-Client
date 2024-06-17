@@ -18,4 +18,17 @@ export class AdminDoctorsComponent {
   get doctors() {
     return this.doctorService.doctors;
   }
+
+  onRemoveDoctor(doctorId: string) {
+    if (confirm('Are you sure you want to delete?')) {
+      this.doctorService.removeDoctor(doctorId).subscribe((res) => {
+        // Relect the changes in the UI
+        this.doctorService.doctors = this.doctorService.doctors.filter(
+          (d) => d.doctorId !== doctorId
+        );
+
+        alert('Doctor deleted successfully!');
+      });
+    }
+  }
 }

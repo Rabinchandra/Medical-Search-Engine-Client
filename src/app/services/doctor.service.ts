@@ -21,4 +21,8 @@ export class DoctorService {
   getDoctorById(doctorId: string) {
     return this.http.get<IDoctor>(this.apiUrl + '/' + doctorId);
   }
+
+  removeDoctor(doctorId: string) {
+    return this.http.delete(this.apiUrl + `/${doctorId}`);
+  }
 }
