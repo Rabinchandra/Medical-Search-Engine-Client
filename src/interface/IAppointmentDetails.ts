@@ -9,4 +9,6 @@ export interface IAppointmentDetails {
   status: string;
   appointmentDate?: string;
   appointmentTime?: string;
+  purpose?: string;
+  notes?: string;
 }

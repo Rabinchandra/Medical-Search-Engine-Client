@@ -4,6 +4,7 @@ import { formatTime, formatDate } from '../../../utility/utility';
 import { RouterLink } from '@angular/router';
 import { AppointmentService } from '../../services/appointment.service';
 import { UserService } from '../../services/user.service';
+import { IAppointmentDetails } from '../../../interface/IAppointmentDetails';
 
 @Component({
   selector: 'app-patient-appointment',
@@ -13,7 +14,7 @@ import { UserService } from '../../services/user.service';
   styleUrl: './patient-appointment.component.css',
 })
 export class PatientAppointmentComponent {
-  appointments: IAppointment[] = [];
+  appointments: IAppointmentDetails[] = [];
 
   constructor(
     private appointmentService: AppointmentService,

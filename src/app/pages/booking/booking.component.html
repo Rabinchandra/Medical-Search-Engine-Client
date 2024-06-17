@@ -1,7 +1,7 @@
 <section>
   <h2>Make an Appointment</h2>
   <div class="wrapper d-flex">
-    <form (ngSubmit)="book()">
+    <form>
       <div>
         <label for="purpose">Purpose</label>
         <input
@@ -22,7 +22,24 @@
         />
       </div>
       <div>
-        <button class="d-block primary-btn">Make an appointment request</button>
+        @if(isBeingBooked == 'yes') {
+        <button class="d-block primary-btn">
+          Making request for appointment
+          <img
+            src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
+            alt=""
+            width="15"
+          />
+        </button>
+        } @else if(isBeingBooked == 'done') {
+        <button class="d-block success-btn">
+          Request successfully made for appointment
+        </button>
+        } @else {
+        <button class="d-block primary-btn" (click)="book()">
+          Book an appointment
+        </button>
+        }
       </div>
     </form>
     <!--  -->

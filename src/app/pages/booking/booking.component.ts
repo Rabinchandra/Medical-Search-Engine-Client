@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppointmentService } from '../../services/appointment.service';
 import { UserService } from '../../services/user.service';
 import { FormsModule } from '@angular/forms';
@@ -27,15 +27,19 @@ export class BookingComponent {
   };
 
   dateTime = '';
+  isBeingBooked = '';
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private appointService: AppointmentService,
     private userService: UserService,
     private doctorService: DoctorService
   ) {}
 
   ngOnInit() {
+    console.log(this.userService.currentUser);
+
     this.route.queryParams.subscribe((params) => {
       this.paramsId = params['id'];
       console.log(this.doctorService.doctors);
@@ -47,29 +51,28 @@ export class BookingComponent {
   }
 
   book() {
-    console.clear();
+    // Redirect to login page if the user hasn't login yet
+    // if (!this.userService.currentUser) {
+    //   this.router.navigateByUrl('/signin');
+    // }
+
     const user = this.userService.currentUser;
 
-    console.log();
+    this.isBeingBooked = 'yes';
 
-    /*if (user && this.dateTime !== '') {
+    if (user && this.dateTime !== '') {
       let date = this.dateTime.split('T')[0]; // extract date
       let time = this.dateTime.split('T')[1] + ':00'; // extract time
 
-      console.log(date, time);
       this.appointment.doctorId = this.paramsId;
       this.appointment.patientId = user.uid;
       this.appointment.appointmentDate = date;
       this.appointment.appointmentTime = time;
+
       // Make an appointment
-      this.appointService.makeAppointment(this.appointment).subscribe({
-        next(value) {
-          console.log(value);
-        },
-        error(err) {
-          console.log('Error', err);
-        },
-      });
-    }*/
+      this.appointService
+        .makeAppointment(this.appointment)
+        .subscribe((res) => (this.isBeingBooked = 'done'));
+    }
   }
 }

@@ -23,8 +23,8 @@ export class AppointmentService {
   // Method that returns all the appointments of a particular patient
   getAllPatientAppointments(patientId: string) {
     console.log('patient appointments', patientId);
-    return this.http.get<IAppointment[]>(
-      this.patientAppointmentApiUrl + patientId
+    return this.http.get<IAppointmentDetails[]>(
+      this.patientAppointmentApiUrl + 'details/' + patientId
     );
   }
 
