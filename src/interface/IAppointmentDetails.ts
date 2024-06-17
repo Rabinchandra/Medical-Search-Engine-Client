@@ -11,4 +11,5 @@ export interface IAppointmentDetails {
   appointmentTime?: string;
   purpose?: string;
   notes?: string;
+  meetingUrl?: string;
 }

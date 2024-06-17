@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { VideoCallComponent } from '../../components/video-call/video-call.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-meeting',
@@ -8,4 +9,10 @@ import { VideoCallComponent } from '../../components/video-call/video-call.compo
   templateUrl: './meeting.component.html',
   styleUrl: './meeting.component.css',
 })
-export class MeetingComponent {}
+export class MeetingComponent {
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    console.log(this.route.params.subscribe((p) => console.log(p)));
+  }
+}

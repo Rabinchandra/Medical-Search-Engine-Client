@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, Input } from '@angular/core';
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 
 function randomID(len: number) {
@@ -30,6 +30,8 @@ export class VideoCallComponent {
   @ViewChild('videoWrapper')
   root!: ElementRef;
 
+  @Input() callUrl = '';
+
   ngAfterViewInit() {
     const roomID = getUrlParams().get('roomID') || randomID(5);
 
@@ -39,10 +41,13 @@ export class VideoCallComponent {
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
       appID,
       serverSecret,
-      roomID,
+      this.callUrl,
       randomID(5),
       randomID(5)
     );
+
+    console.clear();
+    console.log('Room id', this.callUrl);
 
     // Create instance object from Kit Token.
     const zp = ZegoUIKitPrebuilt.create(kitToken);
@@ -59,7 +64,7 @@ export class VideoCallComponent {
             window.location.host +
             window.location.pathname +
             '?roomID=' +
-            roomID,
+            this.callUrl,
         },
       ],
       scenario: {

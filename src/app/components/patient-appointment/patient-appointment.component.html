@@ -21,7 +21,7 @@
         <td class="text-center">{{ app.status }}</td>
         <td class="text-right px-4" style="width: 230px">
           @if(app.status != 'pending') {
-          <a [routerLink]="['/meeting']">
+          <a [routerLink]="['/meeting', app.meetingUrl]">
             <button class="success-btn cursor-pointer">Join Meeting</button></a
           >
           }

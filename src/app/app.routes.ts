@@ -49,7 +49,7 @@ export const routes: Routes = [
     component: AdminAddDoctorComponent,
   },
   {
-    path: 'meeting',
+    path: 'meeting/:id',
     component: MeetingComponent,
   },
   {

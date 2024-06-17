@@ -53,6 +53,6 @@ export class DoctorAppointmentComponent {
             this.isLoading = false;
           });
       }
-    }, 1000);
+    }, 2000);
   }
 }

@@ -26,7 +26,10 @@ export class PatientAppointmentComponent {
     if (user) {
       this.appointmentService
         .getAllPatientAppointments(user.uid)
-        .subscribe((app) => (this.appointments = app));
+        .subscribe((app) => {
+          this.appointments = app;
+          console.log(app);
+        });
     }
   }
 }
