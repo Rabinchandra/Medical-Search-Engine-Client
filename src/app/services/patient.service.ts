@@ -21,4 +21,8 @@ export class PatientService {
   getAllPatients() {
     return this.http.get<IPatient[]>(this.patientApiUrl);
   }
+
+  deletePatient(patientId: string) {
+    return this.http.delete(this.patientApiUrl + `/${patientId}`);
+  }
 }

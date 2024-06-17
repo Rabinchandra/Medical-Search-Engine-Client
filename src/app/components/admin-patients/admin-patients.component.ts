@@ -43,4 +43,18 @@ export class AdminPatientsComponent {
   get patients() {
     return this.patientService.patients;
   }
+
+  onClickRemovePatient(patientId: string) {
+    console.log(patientId);
+    if (confirm('Are you sure you want to remove?')) {
+      this.patientService.deletePatient(patientId).subscribe(() => {
+        // Remove from UI
+        this.patientService.patients = this.patientService.patients.filter(
+          (p) => p.patientId !== patientId
+        );
+
+        alert('Patient deleted successfully!');
+      });
+    }
+  }
 }
