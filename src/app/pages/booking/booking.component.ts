@@ -4,6 +4,8 @@ import { AppointmentService } from '../../services/appointment.service';
 import { UserService } from '../../services/user.service';
 import { FormsModule } from '@angular/forms';
 import { IAppointment } from '../../../interface/IAppointment';
+import { DoctorService } from '../../services/doctor.service';
+import { IDoctor } from '../../../interface/IDoctor';
 
 @Component({
   selector: 'app-booking',
@@ -13,16 +15,11 @@ import { IAppointment } from '../../../interface/IAppointment';
   styleUrl: './booking.component.css',
 })
 export class BookingComponent {
-  constructor(
-    private route: ActivatedRoute,
-    private appointService: AppointmentService,
-    private userService: UserService
-  ) {}
-
-  id: number = 0;
-
+  // fields
+  paramsId: string = '';
+  currentDoctor: IDoctor | null = null;
   appointment: IAppointment = {
-    doctorId: 'qHYME9mcBEQgQgMjfKEqkCoVnv03', // doctor francis
+    doctorId: '',
     patientId: '',
     appointmentDate: '',
     appointmentTime: '',
@@ -31,9 +28,21 @@ export class BookingComponent {
 
   dateTime = '';
 
+  constructor(
+    private route: ActivatedRoute,
+    private appointService: AppointmentService,
+    private userService: UserService,
+    private doctorService: DoctorService
+  ) {}
+
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
-      this.id = params['id'];
+      this.paramsId = params['id'];
+      console.log(this.doctorService.doctors);
+      // Get the current doctor using the params id  - (doctorId)
+      this.doctorService
+        .getDoctorById(this.paramsId)
+        .subscribe((res) => (this.currentDoctor = res));
     });
   }
 
@@ -41,11 +50,14 @@ export class BookingComponent {
     console.clear();
     const user = this.userService.currentUser;
 
-    if (user && this.dateTime !== '') {
+    console.log();
+
+    /*if (user && this.dateTime !== '') {
       let date = this.dateTime.split('T')[0]; // extract date
       let time = this.dateTime.split('T')[1] + ':00'; // extract time
 
       console.log(date, time);
+      this.appointment.doctorId = this.paramsId;
       this.appointment.patientId = user.uid;
       this.appointment.appointmentDate = date;
       this.appointment.appointmentTime = time;
@@ -58,6 +70,6 @@ export class BookingComponent {
           console.log('Error', err);
         },
       });
-    }
+    }*/
   }
 }
