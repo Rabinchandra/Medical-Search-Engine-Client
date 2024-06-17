@@ -48,3 +48,16 @@ export function formatTime(date: Date): string {
 
   return `${hours}:${minutesStr} ${ampm}`;
 }
+
+export function getTodayDate() {
+  const year = new Date().getFullYear();
+  let month = new Date().getMonth();
+  let date = new Date().getDate();
+
+  let finalMonth =
+    month.toString().length == 1 ? '0' + (~~month + 1) : month.toString();
+
+  let finalDate = date.toString().length == 1 ? '0' + date : date.toString();
+
+  return `${year}-${finalMonth}-${finalDate}`;
+}

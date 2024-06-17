@@ -13,6 +13,7 @@ export class AppointmentService {
   private appointmentApiUrl = `https://localhost:7104/api/appointment`;
   private appointmentDetailsApiUrl = `https://localhost:7104/api/appointment/details`;
   private patientAppointmentApiUrl = `https://localhost:7104/api/appointment/patient/`;
+  private doctorAppointmentApiUrl = `https://localhost:7104/api/appointment/doctor`;
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -45,5 +46,12 @@ export class AppointmentService {
 
   acceptAppointment(appointmentId: number) {
     return this.http.get(`${this.appointmentApiUrl}/accept/${appointmentId}`);
+  }
+
+  // Get all the appointments of a specific doctor
+  getAppointmentsOfDoctor(doctorId: string) {
+    return this.http.get<IAppointmentDetails[]>(
+      `${this.doctorAppointmentApiUrl}/details/${doctorId}`
+    );
   }
 }

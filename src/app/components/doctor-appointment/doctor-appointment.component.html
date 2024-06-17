@@ -20,25 +20,39 @@
       Completed
     </button>
   </div>
+
   <section>
     <h4 class="text-capitalize">{{ currentTab }} Appointment</h4>
+
+    @if(isLoading) {
+    <div class="text-center mt-5">
+      <img
+        src="https://media.tenor.com/G7LfW0O5qb8AAAAC/loading-gif.gif"
+        alt=""
+        width="30"
+      />
+    </div>
+
+    } @else {
     <table class="w-100 mt-5">
       <thead class="text-center text-white p-3">
         <tr>
           <td>Date</td>
           <td>Time</td>
-          <td>Doctor</td>
+          <td>Patient Name</td>
           <td>Purpose</td>
           <td>Status</td>
           <td>Actions</td>
         </tr>
       </thead>
       <tbody>
-        @for(app of appointments; track app) {
+        @if(currentTab == 'today') {
+        <!-- Today's Appointments -->
+        @for(app of todayAppointments; track app) {
         <tr>
           <td class="text-center">{{ app.appointmentDate }}</td>
           <td class="text-center">{{ app.appointmentTime }}</td>
-          <td class="text-center">Dr. James Bob</td>
+          <td class="text-center">{{ app.patientName }}</td>
           <td class="text-center">{{ app.purpose }}</td>
           <td class="text-center">{{ app.status }}</td>
           <td class="text-right px-4" style="width: 230px">
@@ -52,8 +66,22 @@
             <button class="primary-btn ml-3 cursor-pointer">Cancel</button>
           </td>
         </tr>
-        }
+        } } @else if (currentTab == 'upcoming') {
+        <!-- Upcoming Appointments -->
+        @for(app of upcomingAppointments; track app) {
+        <tr>
+          <td class="text-center">{{ app.appointmentDate }}</td>
+          <td class="text-center">{{ app.appointmentTime }}</td>
+          <td class="text-center">{{ app.patientName }}</td>
+          <td class="text-center">{{ app.purpose }}</td>
+          <td class="text-center">{{ app.status }}</td>
+          <td class="text-right px-4" style="width: 230px">
+            <button class="primary-btn ml-3 cursor-pointer">Cancel</button>
+          </td>
+        </tr>
+        } }
       </tbody>
     </table>
+    }
   </section>
 </section>
