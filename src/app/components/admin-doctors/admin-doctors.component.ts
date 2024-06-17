@@ -13,6 +13,8 @@ import { DoctorService } from '../../services/doctor.service';
 export class AdminDoctorsComponent {
   constructor(private doctorService: DoctorService) {}
 
+  ngOnInit() {}
+
   get doctors() {
     return this.doctorService.doctors;
   }

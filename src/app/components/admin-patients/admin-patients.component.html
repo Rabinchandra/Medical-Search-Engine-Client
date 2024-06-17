@@ -20,15 +20,11 @@
     <div class="d-flex mb-3 doctor-list-item py-4">
       <section class="flex-1 d-flex">
         <div
-          [style.background-image]="'url(' + patient.profileImg + ')'"
+          [style.background-image]="'url(' + patient.profileImgUrl + ')'"
           class="img rounded-circle"
         ></div>
         <div class="details ml-4">
-          <h4>{{ patient.patientName }}</h4>
-          <div class="mt-3">
-            <b>Doctor Name: </b>
-            <span>{{ patient.doctorName }}</span>
-          </div>
+          <h4>{{ patient.name }}</h4>
           <div class="py-1">
             <b>Email: </b>
             <span>
@@ -38,7 +34,7 @@
           <div class="">
             <b>Contact: </b>
             <span>
-              {{ patient.contact_number }}
+              {{ patient.contactNumber }}
             </span>
           </div>
         </div>
