@@ -1,7 +1,12 @@
-<nav>
+<nav class="d-flex justify-content-between align-items-center px-lg">
+  <div class="logo">
+    <a [routerLink]="['']">
+      <img src="assets/images/logo_.png" alt="" width="200" />
+    </a>
+  </div>
   <ul class="d-flex p-0 py-3 justify-content-end align-items-center">
     <li>
-      <a [routerLink]="['']" class="active-link">Search Engine</a>
+      <a [routerLink]="['search-engine']" class="active-link">Search Engine</a>
     </li>
 
     <!-- link based on the type of user -->

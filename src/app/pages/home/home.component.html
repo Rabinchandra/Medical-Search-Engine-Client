@@ -1,55 +1,56 @@
-<main>
-  <header class="d-flex justify-space-between">
-    <section>
-      <div class="logo"></div>
-      <h1 class="mt-5 mb-0">Medical Search Engine</h1>
-      <div
-        class="search-symptoms-input search-container d-flex align-items-center overflow-hidden mt-5"
-      >
-        <input
-          type="text"
-          placeholder="Type your symptoms here..."
-          class="border-0 py-3 d-block w-100"
-          [(ngModel)]="searchText"
-        />
-        <h3 class="ml-3 mr-2">
-          @if(isLoading) {
-          <img
-            src="https://i.pinimg.com/originals/6b/e0/89/6be0890f52e31d35d840d4fe2e10385b.gif"
-            alt=""
-            width="50"
-            class="mt-2 mx-auto loader"
-          />
-          } @else {
-          <i
-            class="fi fi-rr-search d-block mt-2 search-icon d-block mx-auto"
-            (click)="onSearch()"
-          ></i
-          >}
-        </h3>
+<section class="hero d-flex px-lg">
+  <img src="assets/images/hero.png" alt="" class="hero-image" />
+  <div class="hero-text ml-5">
+    <h1 class="h1">
+      World's Best
+      <span class="primary-text">Trusted Health Care Place</span>
+    </h1>
+    <p class="lead my-4">
+      World's most trusted healthcare destination, providing top-notch medical
+      services and compassionate care for all patients.
+    </p>
+    <button class="primary-btn text-lead">Book a consultation</button>
+  </div>
+</section>
+<section class="px-5 py-5 d-flex about-us">
+  <div>
+    <header>
+      <h5 class="primary-text">About us</h5>
+      <h1>Leading the way in the Pharmacy and Healthcare</h1>
+      <p class="text-secondary py-2">
+        At Guardian Angel Hospital, we blend compassionare care with medical
+        excellence, ensuring every patient recieves the highest quality
+        treatment in a trusted, nurturing environment. Experience healthcare
+        redefined with us.
+      </p>
+    </header>
+    <div class="boxes">
+      <div class="box-wrapper">
+        <div class="box text-center bg-primary">
+          <span class="d-block">10,000+</span>
+          <p class="d-block">Happy Patients</p>
+        </div>
+        <div class="box text-center">
+          <span class="d-block">100+</span>
+          <p class="d-block">Hospital Rooms</p>
+        </div>
       </div>
-    </section>
-
-    <section class="profile mt-5 text-secondary">
-      <div
-        [style.background-image]="'url(' + currentUser?.photoURL || '' + ')'"
-        class="profile-wrapper rounded-circle"
-      ></div>
-      <h6>
-        @if(currentUser == null) { Anonymous User } @else {
-        {{ currentUser.displayName }}
-        }
-      </h6>
-      <div class="time mt-2 mb-1">11:40 AM</div>
-      <div class="day">Sunday, June 10</div>
-    </section>
-  </header>
-
-  <section class="mb-5">
-    <div class="query-response">
-      <div #treatmentDiv></div>
-      <br />
-      <div #recommendDiv></div>
+      <div class="box-wrapper mt-3">
+        <div class="box text-center">
+          <span class="d-block">200+</span>
+          <p class="d-block">Company connected</p>
+        </div>
+        <div class="box text-center">
+          <span class="d-block">50+</span>
+          <p class="d-block">Country Wide</p>
+        </div>
+      </div>
     </div>
-  </section>
-</main>
+  </div>
+  <div>
+    <video autoplay muted loop>
+      <source src="your-video-file.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>

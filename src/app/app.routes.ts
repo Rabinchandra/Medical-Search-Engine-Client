@@ -10,11 +10,16 @@ import { AdminPatientsComponent } from './components/admin-patients/admin-patien
 import { AdminAddDoctorComponent } from './components/admin-add-doctor/admin-add-doctor.component';
 import { MeetingComponent } from './pages/meeting/meeting.component';
 import { DoctorAppointmentComponent } from './components/doctor-appointment/doctor-appointment.component';
+import { SearchEngineComponent } from './pages/search-engine/search-engine.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+  },
+  {
+    path: 'search-engine',
+    component: SearchEngineComponent,
   },
   {
     path: 'consult-doctor',

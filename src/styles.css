@@ -19,6 +19,10 @@ input {
 }
 
 body {
+  /* padding: 0 6em; */
+}
+
+.px-lg {
   padding: 0 6em;
 }
 
@@ -28,6 +32,10 @@ body {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.primary-text {
+  color: var(--primary-color);
 }
 
 /* Buttons */

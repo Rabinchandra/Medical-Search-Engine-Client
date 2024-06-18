@@ -1,0 +1,55 @@
+<main class="px-lg">
+  <header class="d-flex justify-space-between">
+    <section>
+      <div class="logo"></div>
+      <h1 class="mt-5 mb-0">Medical Search Engine</h1>
+      <div
+        class="search-symptoms-input search-container d-flex align-items-center overflow-hidden mt-5"
+      >
+        <input
+          type="text"
+          placeholder="Type your symptoms here..."
+          class="border-0 py-3 d-block w-100"
+          [(ngModel)]="searchText"
+        />
+        <h3 class="ml-3 mr-2">
+          @if(isLoading) {
+          <img
+            src="https://i.pinimg.com/originals/6b/e0/89/6be0890f52e31d35d840d4fe2e10385b.gif"
+            alt=""
+            width="50"
+            class="mt-2 mx-auto loader"
+          />
+          } @else {
+          <i
+            class="fi fi-rr-search d-block mt-2 search-icon d-block mx-auto"
+            (click)="onSearch()"
+          ></i
+          >}
+        </h3>
+      </div>
+    </section>
+
+    <section class="profile mt-5 text-secondary">
+      <div
+        [style.background-image]="'url(' + currentUser?.photoURL || '' + ')'"
+        class="profile-wrapper rounded-circle"
+      ></div>
+      <h6>
+        @if(currentUser == null) { Anonymous User } @else {
+        {{ currentUser.displayName }}
+        }
+      </h6>
+      <div class="time mt-2 mb-1">11:40 AM</div>
+      <div class="day">Sunday, June 10</div>
+    </section>
+  </header>
+
+  <section class="mb-5">
+    <div class="query-response">
+      <div #treatmentDiv></div>
+      <br />
+      <div #recommendDiv></div>
+    </div>
+  </section>
+</main>
