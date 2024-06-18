@@ -3,7 +3,7 @@ import { AppointmentService } from '../../services/appointment.service';
 import { PatientService } from '../../services/patient.service';
 import { IAppointmentDetails } from '../../../interface/IAppointmentDetails';
 import { VoiceCallService } from '../../services/voice-call.service';
-import { CommonModule } from '@angular/common';
+import { catchError, throwError } from 'rxjs';
 
 interface IAppointmentWithCallStatus extends IAppointmentDetails {
   callStatus?: string;
@@ -21,6 +21,8 @@ export class AdminManageAppointmentsComponent {
   pendingAppointments: IAppointmentWithCallStatus[] = [];
   acceptedAppointments: IAppointmentWithCallStatus[] = [];
 
+  isLoading = true;
+
   constructor(
     private appointmentService: AppointmentService,
     private voiceCallService: VoiceCallService
@@ -31,6 +33,8 @@ export class AdminManageAppointmentsComponent {
       this.appointments = result;
       this.acceptedAppointments = result.filter((a) => a.status == 'accepted');
       this.pendingAppointments = result.filter((a) => a.status == 'pending');
+
+      this.isLoading = false;
     });
   }
 
@@ -73,12 +77,37 @@ export class AdminManageAppointmentsComponent {
 
         this.appointmentService
           .acceptAppointment(app.appointmentId)
-          .subscribe((res) => {
-            // Update the status to reflect in the UI
-            this.pendingAppointments[currentAppointmentIndex].status =
-              'accepted';
-          });
+          .pipe(
+            catchError((error) => {
+              // Handle error here (e.g., log it, show an error message)
+              console.error('Error accepting appointment:', error);
+              // Optionally, throw a new error to propagate it further
+              // throw new Error('Appointment acceptance failed');
+              return throwError('Appointment acceptance failed');
+            })
+          )
+          .subscribe(
+            (res) => {
+              // Update the status to reflect in the UI
+              this.pendingAppointments[currentAppointmentIndex].status =
+                'accepted';
+              alert(
+                'Appointment Successfully Accepted! A Message has also been sent to the patient on WhatsApp to inform about the approval!'
+              );
+            },
+            (error) => {
+              // Handle specific error cases if needed
+              alert('Failed to accept appointment. Please try again later.');
+              console.error('Accept appointment error:', error);
+            }
+          );
       }
     }
+  }
+
+  rejectAppointment() {
+    const messageBody = `
+      We're really sorry to inform you that your appointment has been rejected :(
+    `;
   }
 }

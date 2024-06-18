@@ -20,7 +20,16 @@
   <section class="pending-appointments">
     <h4 class="mb-4">Pending Appointments</h4>
 
-    @for(app of pendingAppointments; track app) {
+    @if(isLoading) {
+    <img
+      src="https://media.tenor.com/G7LfW0O5qb8AAAAC/loading-gif.gif"
+      alt=""
+      width="60"
+      class="d-block mx-auto"
+    />
+    } @else {
+    <span></span>
+    } @for(app of pendingAppointments; track app) {
 
     <div class="d-flex mb-5 appointment-list-item py-4">
       <section class="flex-1 d-flex">
@@ -54,7 +63,7 @@
           <i class="fi fi-rr-check"></i>
         </button>
         <!-- Reject button -->
-        <button class="danger-btn mx-2">
+        <button class="danger-btn mx-2" (click)="rejectAppointment()">
           <i class="fi fi-ss-cross"></i>
         </button>
         }
