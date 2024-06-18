@@ -12,7 +12,9 @@
     <button class="primary-btn text-lead">Book a consultation</button>
   </div>
 </section>
-<section class="px-5 py-5 d-flex about-us">
+
+<!-- About US -->
+<section class="py-5 d-flex about-us">
   <div>
     <header>
       <h5 class="primary-text">About us</h5>
@@ -48,9 +50,79 @@
     </div>
   </div>
   <div>
-    <video autoplay muted loop>
-      <source src="your-video-file.mp4" type="video/mp4" />
+    <video class="mx-5 d-block" autoplay="autoplay" muted loop #videoPlayer>
+      <source src="assets/videos/v.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   </div>
+</section>
+
+<!-- Our Services -->
+<section class="our-services">
+  <header>
+    <h5 class="primary-text mb-4">Our Services</h5>
+    <h1>Your Complete Medical Guide</h1>
+    <p>
+      Your comprehensive Handbook for Medical Services, covering everything for
+      routine check-ups to emergency care for optimal health.
+    </p>
+  </header>
+  <div class="services-boxes d-flex">
+    <!-- box 1 -->
+    <div class="box">
+      <div class="box-icon">
+        <i class="fi fi-rr-scalpel-path"></i>
+      </div>
+      <div class="box-body">
+        <h3>Surgical Services</h3>
+        <p>
+          Skilled surgeries provide precise treatment, ensuring effective care
+          and optimal recovery for patients in need of medical intervention.
+        </p>
+        <div class="next-btn">
+          <i class="fi fi-rr-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- box 2 -->
+    <div class="box">
+      <div class="box-icon">
+        <i class="fi fi-rr-lightbulb-on"></i>
+      </div>
+      <div class="box-body">
+        <h3>Emgergency Care</h3>
+        <p>
+          Immediate expert care for sudden illnesses or injuries ensures timely
+          treatment, promoting swift recovery for patients in need.
+        </p>
+        <div class="next-btn">
+          <i class="fi fi-rr-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- box 3 -->
+    <div class="box">
+      <div class="box-icon">
+        <i class="fi fi-rr-home-heart"></i>
+      </div>
+      <div class="box-body">
+        <h3>Home Health Caring</h3>
+        <p>
+          Customized home health care offers ease and enhances wellness,
+          providing personalized services for patients in need.
+        </p>
+        <div class="next-btn">
+          <i class="fi fi-rr-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="primary-btn d-inline-block mt-5 d-flex mx-auto">
+    View all Services
+    <span
+      ><i class="fi fi-rr-arrow-right d-block ml-2" style="margin-top: 3px"></i
+    ></span>
+  </button>
 </section>

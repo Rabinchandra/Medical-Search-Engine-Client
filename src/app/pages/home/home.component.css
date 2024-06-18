@@ -23,6 +23,10 @@
 }
 
 /* about us */
+.about-us {
+  padding: 2.3em 5em;
+}
+
 .about-us h1 {
   font-weight: 700;
 }
@@ -57,4 +61,102 @@
 
 .about-us .box span {
   font-weight: 600;
+}
+
+.about-us video {
+  width: 90%;
+  align-self: center;
+  margin-top: 13%;
+  border-radius: 1.2em;
+}
+
+/* Our services */
+.our-services {
+  padding: 4em 5em;
+  margin: 2em;
+  background-color: #e8f6fd;
+  border-radius: 2em;
+}
+
+.our-services header {
+  text-align: center;
+}
+
+.our-services h1 {
+  font-weight: 700;
+}
+
+.our-services p {
+  max-width: 600px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.services-boxes {
+  margin-top: 2em;
+  gap: 2em;
+}
+
+.services-boxes .box {
+  border-radius: 2em;
+  background-color: #fff;
+  padding: 2em;
+  width: 500px;
+}
+
+.services-boxes .box-icon {
+  margin-bottom: 1.4em;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #cecbcb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+}
+
+.services-boxes .box-icon i {
+  border-radius: 50%;
+  color: var(--primary-color);
+  font-size: 2em;
+  margin-top: 5px;
+}
+
+.services-boxes .next-btn {
+  text-align: right;
+  margin-top: 1em;
+}
+
+.services-boxes p {
+  font-size: 15px;
+}
+
+.services-boxes > div {
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.services-boxes > div:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+/* Default state for the middle div */
+.services-boxes > div:nth-child(2) {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.services-boxes > div:nth-child(2) i {
+  color: #fff;
+}
+
+/* Hover effect for each div */
+.services-boxes > div:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.services-boxes > div:hover i {
+  color: #fff;
 }
