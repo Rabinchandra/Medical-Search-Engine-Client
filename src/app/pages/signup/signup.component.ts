@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IPatient } from '../../../interface/IPatient';
 import { SignupService } from '../../services/signup.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -25,14 +26,15 @@ export class SignupComponent {
     profileImgUrl: '',
   };
 
-  failureMessage = '';
-  successMessage = '';
+  isSigningUp = false;
 
   constructor(private signupService: SignupService) {}
 
   onFormSubmit() {
     console.log('Forms submitted');
-    console.log(this.patient);
+    // console.log(this.patient);
+
+    this.isSigningUp = true;
 
     // Create a user with the given email and password
     this.signupService
@@ -40,18 +42,26 @@ export class SignupComponent {
       .then((res) => {
         console.log(res);
 
-        this.successMessage = 'Successfully created an account :) !!';
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Succesfully signup!',
+          showConfirmButton: false,
+          timer: 2000,
+        });
 
-        setTimeout(() => {
-          this.successMessage = '';
-        }, 3000);
+        this.isSigningUp = false;
       })
       .catch((err) => {
-        this.failureMessage = err + ' :(';
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Fail to sign up ' + err,
+          showConfirmButton: false,
+          timer: 3000,
+        });
 
-        setTimeout(() => {
-          this.failureMessage = '';
-        }, 3000);
+        this.isSigningUp = false;
       });
   }
 }

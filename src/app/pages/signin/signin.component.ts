@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
+import { sideAlertMessage } from '../../../utility/utility';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signin',
@@ -17,9 +19,6 @@ export class SigninComponent {
     password: '',
   };
 
-  failureMessage = '';
-  successMessage = '';
-
   constructor(private auth: AuthenticationService) {}
 
   onFormSubmit() {
@@ -29,18 +28,15 @@ export class SigninComponent {
     this.auth
       .userSignIn(this.user.email, this.user.password)
       .then((res) => {
-        this.successMessage = 'User succesfully login!';
-
-        setTimeout(() => {
-          this.successMessage = '';
-        }, 3000);
+        sideAlertMessage('success', 'Sign in succesfully');
       })
       .catch((err) => {
-        this.failureMessage = err;
-
-        setTimeout(() => {
-          this.failureMessage = '';
-        }, 5000);
+        console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err,
+        });
       });
   }
 }

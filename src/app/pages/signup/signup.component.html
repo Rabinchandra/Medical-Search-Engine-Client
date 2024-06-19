@@ -6,15 +6,6 @@
         <p class="text-secondary pt-2">Sign up now and access more features</p>
       </header>
       <form class="w-100 mt-4" (ngSubmit)="onFormSubmit()">
-        @if(failureMessage !== '') {
-        <p class="text-danger">
-          {{ failureMessage }}
-        </p>
-        } @if(successMessage !== '') {
-        <p class="text-success">
-          {{ successMessage }}
-        </p>
-        }
         <div>
           <label>Full Name</label>
           <input
@@ -82,7 +73,13 @@
         </div>
 
         <div>
-          <button type="submit" class="primary-btn w-100">Sign up</button>
+          <button type="submit" class="primary-btn w-100">
+            @if(isSigningUp) {
+            <span>Sign Up...</span>
+            } @else {
+            <span>Sign Up</span>
+            }
+          </button>
         </div>
       </form>
     </section>

@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { IAppointment } from '../../../interface/IAppointment';
 import { DoctorService } from '../../services/doctor.service';
 import { IDoctor } from '../../../interface/IDoctor';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-booking',
@@ -70,9 +71,21 @@ export class BookingComponent {
       this.appointment.appointmentTime = time;
 
       // Make an appointment
-      this.appointService
-        .makeAppointment(this.appointment)
-        .subscribe((res) => (this.isBeingBooked = 'done'));
+      this.appointService.makeAppointment(this.appointment).subscribe((res) => {
+        this.isBeingBooked = 'done';
+
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your appointment request has been made successfully',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+
+        setTimeout(() => {
+          this.router.navigateByUrl('/appointment');
+        }, 3000);
+      });
     }
   }
 }

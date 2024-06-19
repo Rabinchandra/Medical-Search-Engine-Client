@@ -167,3 +167,8 @@ tbody tr:nth-child(even) {
 tr button {
   font-size: 13px;
 }
+
+/* Swal */
+button[class^="swal2-"] {
+  background-color: var(--primary-color) !important;
+}

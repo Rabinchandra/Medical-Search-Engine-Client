@@ -6,15 +6,6 @@
         <p class="text-secondary pt-2"></p>
       </header>
       <form class="w-100 mt-4" (ngSubmit)="onFormSubmit()">
-        @if(failureMessage !== '') {
-        <p class="text-danger text-center">
-          {{ failureMessage }}
-        </p>
-        } @if(successMessage !== '') {
-        <p class="text-success text-center">
-          {{ successMessage }}
-        </p>
-        }
         <div>
           <label>Email Address</label>
           <input

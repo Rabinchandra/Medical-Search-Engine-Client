@@ -147,8 +147,17 @@
   color: #fff;
 }
 
-.services-boxes > div:nth-child(2) i {
+.services-boxes > div:nth-child(2) .next-btn i {
   color: #fff;
+}
+
+.services-boxes > div:nth-child(2) i {
+  color: var(--primary-color);
+}
+
+.services-boxes > div:nth-child(2) .box-icon {
+  border-color: #fff;
+  background-color: #fff;
 }
 
 /* Hover effect for each div */
@@ -157,6 +166,56 @@
   color: #fff;
 }
 
+.services-boxes > div:hover .box-icon {
+  border-color: #fff;
+  background-color: #fff;
+}
+
 .services-boxes > div:hover i {
+  color: var(--primary-color);
+}
+
+.services-boxes > div:hover .next-btn i {
   color: #fff;
+}
+
+/* choosing us */
+.choosing-us {
+  padding: 0 5em;
+}
+
+.choosing-us > div {
+  width: 50%;
+}
+
+.choosing-us > div:first-child {
+  display: flex;
+}
+
+.choosing-us .box-wrapper {
+  display: flex;
+  gap: 2em;
+}
+
+.choosing-us .boxes {
+  padding: 12px;
+  margin-left: 2em;
+}
+
+.choosing-us .box-wrapper > div {
+  flex: 1;
+  border-radius: 12px;
+  /* background: ; */
+  padding-bottom: 15px;
+}
+
+.choosing-us .box-wrapper > div p {
+  font-weight: 300;
+  font-size: 13px;
+  margin-top: 10px;
+  color: #666;
+}
+
+.choosing-us .box-wrapper i {
+  color: var(--primary-color);
 }

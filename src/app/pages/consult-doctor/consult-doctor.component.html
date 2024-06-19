@@ -1,6 +1,13 @@
 <section class="px-lg">
   <h2 class="mb-5 mt-4">Available Doctors</h2>
-  @for(doctor of doctors; track doctor) {
+  @if(doctors.length == 0) {
+  <img
+    src="assets/images/loader.gif"
+    alt=""
+    width="60"
+    class="d-block mx-auto mt-5"
+  />
+  } @else { @for(doctor of doctors; track doctor) {
   <div class="d-flex mb-5 doctor-list-item py-4">
     <section class="flex-1 d-flex">
       <div
@@ -32,5 +39,5 @@
       </button>
     </section>
   </div>
-  }
+  } }
 </section>

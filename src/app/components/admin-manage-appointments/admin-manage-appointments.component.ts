@@ -4,6 +4,7 @@ import { PatientService } from '../../services/patient.service';
 import { IAppointmentDetails } from '../../../interface/IAppointmentDetails';
 import { VoiceCallService } from '../../services/voice-call.service';
 import { catchError, throwError } from 'rxjs';
+import Swal from 'sweetalert2';
 
 interface IAppointmentWithCallStatus extends IAppointmentDetails {
   callStatus?: string;
@@ -54,55 +55,79 @@ export class AdminManageAppointmentsComponent {
 
     const phoneNumber = '+916009383347';
 
-    this.voiceCallService.makeCall(phoneNumber).then((res) =>
-      // Update the call status
-      setTimeout(
-        () =>
-          (this.pendingAppointments[currentAppointmentIndex].callStatus =
-            'call made'),
-        6000
+    this.voiceCallService
+      .makeCall(phoneNumber)
+      .then((res) =>
+        // Update the call status
+        setTimeout(() => {
+          this.pendingAppointments[currentAppointmentIndex].callStatus =
+            'call made';
+          Swal.fire({
+            icon: 'success',
+            text: 'Call made successfully ',
+          });
+        }, 6000)
       )
-    );
+      .catch((err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong while trying to make: ' + err,
+        });
+      });
   }
 
   // Method to accept an appointment
   acceptAppointment(app: IAppointmentWithCallStatus) {
-    if (
-      confirm(
-        `Are you sure you want to accept appointment of ${app.patientName}?`
-      )
-    ) {
-      if (app.appointmentId) {
-        const currentAppointmentIndex = this.pendingAppointments.indexOf(app);
+    Swal.fire({
+      title: 'Are you sure you want to accept the appointment?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#4caf50',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Accept it',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (app.appointmentId) {
+          const currentAppointmentIndex = this.pendingAppointments.indexOf(app);
 
-        this.appointmentService
-          .acceptAppointment(app.appointmentId)
-          .pipe(
-            catchError((error) => {
-              // Handle error here (e.g., log it, show an error message)
-              console.error('Error accepting appointment:', error);
-              // Optionally, throw a new error to propagate it further
-              // throw new Error('Appointment acceptance failed');
-              return throwError('Appointment acceptance failed');
-            })
-          )
-          .subscribe(
-            (res) => {
-              // Update the status to reflect in the UI
-              this.pendingAppointments[currentAppointmentIndex].status =
-                'accepted';
-              alert(
-                'Appointment Successfully Accepted! A Message has also been sent to the patient on WhatsApp to inform about the approval!'
-              );
-            },
-            (error) => {
-              // Handle specific error cases if needed
-              alert('Failed to accept appointment. Please try again later.');
-              console.error('Accept appointment error:', error);
-            }
-          );
+          this.appointmentService
+            .acceptAppointment(app.appointmentId)
+            .pipe(
+              catchError((error) => {
+                // Handle error here (e.g., log it, show an error message)
+                console.error('Error accepting appointment:', error);
+                // Optionally, throw a new error to propagate it further
+                // throw new Error('Appointment acceptance failed');
+                return throwError('Appointment acceptance failed');
+              })
+            )
+            .subscribe(
+              (res) => {
+                // Update the status to reflect in the UI
+                this.pendingAppointments[currentAppointmentIndex].status =
+                  'accepted';
+
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Appointment Successfully Accepted!',
+                  text: 'A Message has also been sent to the patient on WhatsApp to inform about the approval!',
+                });
+              },
+              (error) => {
+                // Handle specific error cases if needed
+                console.log(error);
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Failed to accept appointment. Please try again later',
+                });
+              }
+            );
+        }
       }
-    }
+    });
   }
 
   rejectAppointment() {

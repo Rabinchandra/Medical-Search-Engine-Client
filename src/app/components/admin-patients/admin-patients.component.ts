@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PatientService } from '../../services/patient.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-patients',
@@ -46,15 +47,31 @@ export class AdminPatientsComponent {
 
   onClickRemovePatient(patientId: string) {
     console.log(patientId);
-    if (confirm('Are you sure you want to remove?')) {
-      this.patientService.deletePatient(patientId).subscribe(() => {
-        // Remove from UI
-        this.patientService.patients = this.patientService.patients.filter(
-          (p) => p.patientId !== patientId
-        );
 
-        alert('Patient deleted successfully!');
-      });
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: 'rgb(31, 113, 255)',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      // if user confirms
+      if (result.isConfirmed) {
+        this.patientService.deletePatient(patientId).subscribe(() => {
+          // Remove from UI
+          this.patientService.patients = this.patientService.patients.filter(
+            (p) => p.patientId !== patientId
+          );
+
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'User has been deleted.',
+            icon: 'success',
+          });
+        });
+      }
+    });
   }
 }

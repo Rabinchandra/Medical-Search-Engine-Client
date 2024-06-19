@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+
 export function formatDate(date: Date): string {
   const day = date.getDate();
   const monthNames = [
@@ -60,4 +62,25 @@ export function getTodayDate() {
   let finalDate = date.toString().length == 1 ? '0' + date : date.toString();
 
   return `${year}-${finalMonth}-${finalDate}`;
+}
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  },
+});
+
+export function sideAlertMessage(type: string, title: string) {
+  if (type == 'success' || type == 'error') {
+    Toast.fire({
+      icon: type,
+      title: title,
+    });
+  }
 }
