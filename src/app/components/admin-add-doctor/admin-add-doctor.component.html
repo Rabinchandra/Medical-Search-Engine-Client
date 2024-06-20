@@ -62,7 +62,13 @@
         </div>
       </div>
       <div>
-        <button class="primary-btn w-100">Add Doctor</button>
+        <button class="primary-btn w-100">
+          @if(isAdding) {
+          <span>Adding Doctor...</span>
+          } @else {
+          <span>Add Doctor</span>
+          }
+        </button>
       </div>
     </form>
     <section

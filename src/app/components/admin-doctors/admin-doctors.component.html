@@ -1,5 +1,5 @@
 <section class="px-lg">
-  <h2>List of Doctors</h2>
+  <h2>List of Doctor (Admin View)</h2>
   <section class="d-flex align-items-center mt-5">
     <!-- Search -->
     <div
@@ -7,9 +7,11 @@
       style="width: 400px"
     >
       <input
-        type="text"
+        type="search"
         placeholder="Search doctor..."
         class="border-0 flex-1"
+        [(ngModel)]="inputFilter"
+        (ngModelChange)="search($event)"
       />
       <i class="fi fi-rr-search d-block mt-1 search-icon d-block px-4"></i>
     </div>
@@ -21,7 +23,7 @@
   </section>
 
   <section class="mt-5">
-    @for(doctor of doctors; track doctor) {
+    @for(doctor of filteredDoctors; track doctor) {
     <div class="d-flex mb-3 doctor-list-item py-4">
       <section class="flex-1 d-flex">
         <div

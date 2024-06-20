@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IDoctor } from '../../../interface/IDoctor';
 import { FormsModule } from '@angular/forms';
 import { SignupService } from '../../services/signup.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-add-doctor',
@@ -22,15 +23,7 @@ export class AdminAddDoctorComponent {
     speciality: '',
   };
 
-  // {
-  //   "doctorId": "JgBGjgc0SNWbl43xvsbb2TVrXCx2",
-  //   "name": "Dr. Klalen",
-  //   "speciality": "Neurologist",
-  //   "contactNumber": "+81555555555",
-  //   "email": "klalen@gmail.com",
-  //   "availability": 1,
-  //   "profileImgUrl": "testurl.com"
-  // }
+  isAdding = false;
 
   constructor(private signupService: SignupService) {}
 
@@ -39,8 +32,15 @@ export class AdminAddDoctorComponent {
     // Then post the data to the SQL database
     console.log('Submit', this.doctor);
 
+    this.isAdding = true;
+
     this.signupService.createDoctor(this.doctor).then((res) => {
       console.log(res);
+      this.isAdding = false;
+      Swal.fire({
+        icon: 'success',
+        text: 'Doctor added successfully',
+      });
     });
   }
 }
