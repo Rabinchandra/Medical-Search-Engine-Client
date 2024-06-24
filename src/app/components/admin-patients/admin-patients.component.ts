@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { PatientService } from '../../services/patient.service';
 import Swal from 'sweetalert2';
+import { FormsModule } from '@angular/forms';
+import { IPatient } from '../../../interface/IPatient';
 
 @Component({
   selector: 'app-admin-patients',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './admin-patients.component.html',
   styleUrl: './admin-patients.component.css',
 })
@@ -37,12 +39,28 @@ export class AdminPatientsComponent {
   //   },
   // ];
 
+  searchInput = '';
+  filteredPatients: IPatient[] = [];
+
   constructor(private patientService: PatientService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.patientService
+      .getAllPatients()
+      .subscribe((result) => (this.filteredPatients = result));
+  }
 
   get patients() {
     return this.patientService.patients;
+  }
+
+  search(value: string) {
+    if (value.trim() == '') {
+      this.filteredPatients = this.patients;
+    } else {
+      const regex = new RegExp(value, 'ig');
+      this.filteredPatients = this.patients.filter((p) => regex.test(p.name));
+    }
   }
 
   onClickRemovePatient(patientId: string) {

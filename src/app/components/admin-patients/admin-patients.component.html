@@ -7,16 +7,19 @@
       style="width: 400px"
     >
       <input
-        type="text"
+        type="search"
         placeholder="Search patient here...."
         class="border-0 flex-1"
+        name="search"
+        [(ngModel)]="searchInput"
+        (ngModelChange)="search($event)"
       />
       <i class="fi fi-rr-search d-block mt-1 search-icon d-block px-4"></i>
     </div>
   </section>
 
   <section class="mt-5">
-    @for(patient of patients; track patient) {
+    @for(patient of filteredPatients; track patient) {
     <div class="d-flex mb-3 doctor-list-item py-4">
       <section class="flex-1 d-flex">
         <div

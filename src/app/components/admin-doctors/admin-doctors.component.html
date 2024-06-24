@@ -22,6 +22,9 @@
     </a>
   </section>
 
+  @if(isLoading) {
+  <img src="assets/images/loader.png" alt="" width="60" />
+  } @else {
   <section class="mt-5">
     @for(doctor of filteredDoctors; track doctor) {
     <div class="d-flex mb-3 doctor-list-item py-4">
@@ -66,4 +69,5 @@
     </div>
     }
   </section>
+  }
 </section>

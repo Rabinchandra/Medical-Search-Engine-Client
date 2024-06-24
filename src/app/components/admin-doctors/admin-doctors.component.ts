@@ -17,12 +17,15 @@ export class AdminDoctorsComponent {
 
   inputFilter: string = '';
 
+  isLoading = true;
+
   constructor(private doctorService: DoctorService) {}
 
   ngOnInit() {
-    this.doctorService
-      .getAllDoctors()
-      .subscribe((docs) => (this.filteredDoctors = docs));
+    this.doctorService.getAllDoctors().subscribe((docs) => {
+      this.filteredDoctors = docs;
+      this.isLoading = false;
+    });
   }
 
   get doctors() {
